@@ -1,5 +1,5 @@
 // Form submission utility functions
-export const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHgje_ukm2D6y4lYfbyLpkuyLS5v372tdMMNs6uXQ5nM5LsYpXuOjz_8bcqopFy0X8A/exec';
+export const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz5wGxgAmPOZlox8U-_u35zHUmRIwH9FWiUXbJvMdE56EGqEFdEG-sm0T-6MjZDw02ydw/exec';
 
 export interface FormData {
   name: string;
@@ -57,11 +57,11 @@ export const saveToLocalStorage = (formData: FormData): boolean => {
   }
 };
 
-export const getLocalSubmissions = (): any[] => {
+export const getLocalSubmissions = (): FormData[] => {
   try {
     return JSON.parse(localStorage.getItem('formSubmissions') || '[]');
-  } catch (error) {
-    console.error('Error reading local submissions:', error);
+  } catch {
+    console.error('Error reading local submissions');
     return [];
   }
 };
@@ -73,7 +73,7 @@ export const testConnection = async (): Promise<boolean> => {
       method: 'HEAD'
     });
     return response.ok;
-  } catch (error) {
+  } catch {
     return false;
   }
 };

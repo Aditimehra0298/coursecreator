@@ -9,7 +9,6 @@ import Regulations from './components/Regulations';
 import Training from './components/Training';
 import WhyChooseUs from './components/WhyChooseUs';
 import Footer from './components/Footer';
-import TestConnection from './components/TestConnection';
 
 function App() {
   useEffect(() => {
@@ -39,12 +38,6 @@ function App() {
       <Regulations />
       <Training />
       <WhyChooseUs />
-      
-      {/* Temporary Test Connection Component - Remove after testing */}
-      <section className="py-16 px-4">
-        <TestConnection />
-      </section>
-      
       <Footer />
     </div>
   );
