@@ -35,7 +35,7 @@ const Hero = () => {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-32">
       {/* Video Background */}
       <video
         autoPlay

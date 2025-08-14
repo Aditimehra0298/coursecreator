@@ -12,19 +12,28 @@ export interface FormData {
 
 export const submitToGoogleSheet = async (formData: FormData): Promise<{ success: boolean; message: string }> => {
   try {
+    // Use a CORS-friendly approach by creating a form data object
+    const form = new FormData();
+    form.append('name', formData.name);
+    form.append('email', formData.email);
+    form.append('phone', formData.phone);
+    form.append('interest', formData.interest);
+    form.append('message', formData.message);
+    form.append('source', formData.source);
+    form.append('timestamp', new Date().toISOString());
+
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
+      body: form,
+      // Don't set Content-Type header - let the browser set it for FormData
     });
 
     if (response.ok) {
-      const result = await response.json();
+      const result = await response.text();
+      console.log('Form submitted successfully:', result);
       return { success: true, message: 'Form submitted successfully' };
     } else {
+      console.error('Google Apps Script error:', response.status, response.statusText);
       return { success: false, message: `Server error: ${response.status}` };
     }
   } catch (error) {
