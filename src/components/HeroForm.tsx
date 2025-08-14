@@ -12,19 +12,91 @@ const HeroForm = ({ onSubmitted }: HeroFormProps) => {
     interest: 'Both',
     message: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Lead form submitted:', form);
-    alert('Thanks! We will contact you shortly.');
-    setForm({ name: '', email: '', phone: '', interest: 'Both', message: '' });
-    if (onSubmitted) onSubmitted();
+    setIsSubmitting(true);
+    
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbwHgje_ukm2D6y4nM5LsYpXuOjz_8bcqopFy0X8A/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors',
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          interest: form.interest,
+          message: form.message,
+          source: 'hero'
+        })
+      });
+      
+      // Show thank you page
+      setIsSubmitted(true);
+      if (onSubmitted) onSubmitted();
+    } catch (error) {
+      console.error(error);
+      alert('Submission failed. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setForm({ name: '', email: '', phone: '', interest: 'Both', message: '' });
+  };
+
+  // Show Thank You page
+  if (isSubmitted) {
+    return (
+      <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 max-w-2xl mx-auto text-center">
+        <div className="mb-6">
+          <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 className="text-3xl font-bold text-white mb-2">Thank You!</h3>
+          <p className="text-blue-100 text-lg">
+            We've received your message and will get back to you shortly.
+          </p>
+        </div>
+        
+        <div className="space-y-4 text-blue-100">
+          <p>What happens next?</p>
+          <ul className="text-sm space-y-2">
+            <li>• Our team will review your inquiry within 24 hours</li>
+            <li>• You'll receive a personalized response via email</li>
+            <li>• We may schedule a consultation call if needed</li>
+          </ul>
+        </div>
+        
+        <div className="mt-8 space-x-4">
+          <button
+            onClick={resetForm}
+            className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300"
+          >
+            Submit Another Inquiry
+          </button>
+          <button
+            onClick={() => window.location.href = '#hero'}
+            className="bg-white/20 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/30 transition-all duration-300"
+          >
+            Back to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto text-left">
@@ -96,8 +168,12 @@ const HeroForm = ({ onSubmitted }: HeroFormProps) => {
         </div>
       </div>
       <div className="mt-6">
-        <button type="submit" className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-          Submit
+        <button 
+          type="submit" 
+          disabled={isSubmitting}
+          className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </div>
     </form>

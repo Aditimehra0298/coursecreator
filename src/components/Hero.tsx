@@ -74,7 +74,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Empowering organizations across Greece and the EU to meet the highest standards in cybersecurity, 
+            Empowering organizations across world and the EU to meet the highest standards in cybersecurity, 
             digital resilience, and EU regulatory compliance.
           </p>
           
