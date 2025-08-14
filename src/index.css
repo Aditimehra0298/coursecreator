@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations for Training timeline */
+@keyframes growY {
+	from { transform: scaleY(0); }
+	to { transform: scaleY(1); }
+}
+
+.timeline-grow {
+	transform-origin: top;
+	animation: growY 2.5s ease-out both;
+}
+
+@keyframes fadeInUp {
+	0% { opacity: 0; transform: translateY(16px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+.reveal-up {
+	animation: fadeInUp 700ms ease-out both;
+}
+
+/* Shining sweep effect for section backgrounds */
+@keyframes shineSweep {
+	0% { transform: translateX(-150%) rotate(20deg); }
+	100% { transform: translateX(150%) rotate(20deg); }
+}
+
+.shine-sweep {
+	position: absolute;
+	background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 100%);
+	filter: blur(12px);
+	animation: shineSweep 4s linear infinite;
+}
