@@ -53,15 +53,7 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-center mb-6 animate-pulse">
-            <div className="[filter:drop-shadow(0_0_28px_rgba(59,130,246,0.7))]">
-              <img
-                src="/l7.png"
-                alt="Logo"
-                className="w-28 h-28 object-contain [filter:drop-shadow(0_0_12px_rgba(255,255,255,0.9))] brightness-110"
-              />
-            </div>
-          </div>
+
           
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             <span className="bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent">

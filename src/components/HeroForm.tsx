@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { submitToGoogleSheet, saveToLocalStorage } from '../utils/formSubmission';
 
 type HeroFormProps = {
   onSubmitted?: () => void;
@@ -25,26 +26,50 @@ const HeroForm = ({ onSubmitted }: HeroFormProps) => {
     setIsSubmitting(true);
     
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbwHgje_ukm2D6y4nM5LsYpXuOjz_8bcqopFy0X8A/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        mode: 'no-cors',
-        body: JSON.stringify({
+      // Try to submit to Google Apps Script
+      const result = await submitToGoogleSheet({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        interest: form.interest,
+        message: form.message,
+        source: 'hero'
+      });
+
+      if (result.success) {
+        // Success - Google Apps Script worked
+        console.log('Form submitted successfully:', result.message);
+        setIsSubmitted(true);
+        if (onSubmitted) onSubmitted();
+      } else {
+        // Google Apps Script failed, use fallback
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      
+      // Fallback: Store in localStorage and show success message
+      try {
+        const saved = saveToLocalStorage({
           name: form.name,
           email: form.email,
           phone: form.phone,
           interest: form.interest,
           message: form.message,
           source: 'hero'
-        })
-      });
-      
-      // Show thank you page
-      setIsSubmitted(true);
-      if (onSubmitted) onSubmitted();
-    } catch (error) {
-      console.error(error);
-      alert('Submission failed. Please try again later.');
+        });
+        
+        if (saved) {
+          alert('Thanks! We will contact you shortly. (Note: Your submission has been saved locally due to a technical issue)');
+          setIsSubmitted(true);
+          if (onSubmitted) onSubmitted();
+        } else {
+          throw new Error('Failed to save locally');
+        }
+      } catch (fallbackError) {
+        console.error('Fallback also failed:', fallbackError);
+        alert('Submission failed. Please try again later or contact us directly at aditimehra0298@gmail.com');
+      }
     } finally {
       setIsSubmitting(false);
     }

@@ -1,18 +1,35 @@
-import React from 'react';
+import { useEffect } from 'react';
+import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import About from './components/About';
 import SampleVideos from './components/SampleVideos';
+import About from './components/About';
+import ELearning from './components/ELearning';
 import Services from './components/Services';
 import Regulations from './components/Regulations';
 import Training from './components/Training';
 import WhyChooseUs from './components/WhyChooseUs';
 import Footer from './components/Footer';
-import Navigation from './components/Navigation';
-import ELearning from './components/ELearning';
+import TestConnection from './components/TestConnection';
 
 function App() {
+  useEffect(() => {
+    // Handle hash-based navigation
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#get-started') {
+        // This will be handled by the Hero component
+        window.location.hash = '#hero';
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange(); // Handle initial hash
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       <Navigation />
       <Hero />
       <SampleVideos />
@@ -22,6 +39,12 @@ function App() {
       <Regulations />
       <Training />
       <WhyChooseUs />
+      
+      {/* Temporary Test Connection Component - Remove after testing */}
+      <section className="py-16 px-4">
+        <TestConnection />
+      </section>
+      
       <Footer />
     </div>
   );
