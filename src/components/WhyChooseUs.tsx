@@ -170,7 +170,7 @@ const WhyChooseUs = () => {
                 Ready to meet the EU's toughest cybersecurity regulations?
               </h3>
               <p className="text-lg text-gray-300 mb-8">
-                Partner with SecureFin to turn compliance into your competitive advantage.
+                Partner with Sustainable Future Trainings to turn compliance into your competitive advantage.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
