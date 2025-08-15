@@ -62,7 +62,7 @@ const WhyChooseUs = () => {
 
   const testimonials = [
     {
-      quote: "SecureFin transformed our compliance approach. Their DORA expertise saved us months of preparation.",
+      quote: "Sustainable Future Trainings transformed our compliance approach. Their DORA expertise saved us months of preparation.",
       author: "Maria Koutsou",
       position: "CISO, Athens FinTech",
       rating: 5

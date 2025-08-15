@@ -114,7 +114,7 @@ const Regulations = () => {
                 <h4 className="text-xl font-bold text-yellow-900">Compliance is Critical</h4>
               </div>
               <p className="text-yellow-800 leading-relaxed">
-                Both regulations carry significant penalties for non-compliance. SecureFin helps you navigate 
+                Both regulations carry significant penalties for non-compliance. Sustainable Future Trainings helps you navigate 
                 these complex requirements with expert guidance and comprehensive solutions.
               </p>
             </div>

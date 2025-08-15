@@ -138,7 +138,7 @@ const Footer = () => {
             <div className="border-t border-gray-700 pt-8">
               <div className="flex flex-col lg:flex-row justify-between items-center">
                 <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-400 text-sm mb-4 lg:mb-0">
-                  <p>&copy; 2019-2025 SecureFin. All rights reserved.</p>
+                  <p>&copy; 2019-2025 Sustainable Future Trainings. All rights reserved.</p>
                   <div className="flex space-x-6">
                     <a href="#" className="hover:text-teal-400 transition-colors">Privacy Policy</a>
                     <a href="#" className="hover:text-teal-400 transition-colors">Terms of Service</a>
