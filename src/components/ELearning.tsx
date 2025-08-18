@@ -4,16 +4,8 @@ const ELearning = () => {
   return (
     <section
       id="e-learning"
-      className="relative overflow-hidden py-20 bg-cover bg-center"
-      style={{ backgroundImage: "url('/l7.png')" }}
+      className="relative overflow-hidden py-20"
     >
-      {/* Light overlay for readability */}
-      <div className="absolute inset-0 z-0 bg-white/70"></div>
-      {/* Soft floating accents */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute -top-10 -left-10 w-72 h-72 bg-teal-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
-      </div>
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Intro */}
