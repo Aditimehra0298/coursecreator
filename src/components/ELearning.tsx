@@ -12,6 +12,13 @@ const ELearning = () => {
           <div className="text-center mb-12">
             <p className="text-sm font-medium text-teal-700 uppercase tracking-wider mb-2">Train smarter, not harder — with learning designed for the way your people work today.</p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Our Cutting-Edge E‑Learning Portal</h2>
+            <div className="flex justify-center mb-6">
+              <img
+                src="/l7.png"
+                alt="E-Learning Portal Logo"
+                className="w-32 h-32 object-contain"
+              />
+            </div>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
               Discover a smarter way to learn with our engaging, effective, and easy‑to‑use e‑learning platform. Designed for organizations that value flexibility, quality, and results, our portal empowers your workforce to learn anytime, anywhere — at their own pace.
             </p>
