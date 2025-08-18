@@ -4,7 +4,7 @@ const ELearning = () => {
   return (
     <section
       id="e-learning"
-      className="relative overflow-hidden py-20"
+      className="relative overflow-hidden py-20 bg-white"
     >
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
