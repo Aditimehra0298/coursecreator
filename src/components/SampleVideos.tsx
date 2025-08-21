@@ -1,5 +1,16 @@
 import { useRef, useState } from 'react';
 
+// Add custom CSS for marquee animation
+const marqueeStyle = `
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+`;
+
 type PlayableKey = 'greek' | 'english';
 type LanguageKey = PlayableKey | 'french' | 'german' | 'spanish';
 
@@ -34,23 +45,36 @@ const SampleVideos = () => {
   // Removed 'All' capsule
 
   // No form gating here
-  return (
-    <section id="videos" className="py-20 bg-gradient-to-b from-white to-blue-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    return (
+    <>
+      <style>{marqueeStyle}</style>
+      <section id="sample-videos" className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Explore Our Sample Learning Videos
+            {/* AI-Powered Learning Badge */}
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full shadow-lg mb-6 transform hover:scale-105 transition-transform duration-200">
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span className="font-semibold text-xs">AI-Enhanced Learning</span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-600 mb-4">
+              Experience the Future of Conformity Assessment Training
             </h2>
-            <p className="text-lg text-gray-700">Kickstart Your Learning • Unlock New Skills</p>
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Witness how <span className="text-teal-600 font-semibold">Evoke AI by DAMNART</span> transforms complex technical standards into engaging, multilingual learning experiences that empower professionals worldwide.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mt-6">
+              <p className="text-sm text-gray-600 mb-3 w-full">Choose Your Learning Language:</p>
               {languages.map(lang => {
                 const isPlayable = (lang.key === 'greek' || lang.key === 'english');
                 const isActive = active === lang.key;
-                const baseClass = 'px-3 py-1 rounded-full text-sm font-medium transition-colors';
-                const activeClass = 'bg-black/80 text-white';
-                const normalClass = lang.capsuleClass || 'bg-gray-200 text-gray-800 hover:bg-gray-300';
-                const disabledClass = 'opacity-50 cursor-not-allowed pointer-events-none';
+                const baseClass = 'px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 transform hover:scale-105';
+                const activeClass = 'bg-gradient-to-r from-blue-600 to-teal-600 text-white shadow-lg';
+                const normalClass = lang.capsuleClass || 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md';
+                const disabledClass = 'opacity-50 cursor-not-allowed pointer-events-none bg-gray-100 text-gray-400';
                 return (
                   <button
                     key={lang.key}
@@ -88,10 +112,50 @@ const SampleVideos = () => {
               </div>
             ))}
           </div>
+          
+          {/* Enhanced Content Below Video */}
+          <div className="mt-8 text-center">
+            <div className="bg-gradient-to-r from-blue-50 to-teal-50 p-6 rounded-2xl border border-blue-200 shadow-lg">
+              <h3 className="text-xl font-bold text-blue-800 mb-3">
+                🚀 Ready to Transform Your Training?
+              </h3>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                Experience the power of <span className="text-teal-600 font-semibold">AI-driven course creation</span> that makes complex standards accessible, engaging, and effective for learners worldwide.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <div className="flex items-center text-blue-700">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>Multilingual Support</span>
+                </div>
+                <div className="flex items-center text-teal-700">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>AI-Enhanced Learning</span>
+                </div>
+                <div className="flex items-center text-indigo-700">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>Global Standards</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Simple Grey Banner - Below Video */}
+          <div className="bg-gray-100 text-gray-500 py-3 mt-6 rounded-lg border border-gray-200">
+            <p className="text-center text-sm italic px-4">
+              This video is shared with the kind permission of Sustainable Futures Trainings, serving as a prime example of the exceptional quality and innovative instructional methodology that underpin our AI-driven learning content.
+            </p>
+          </div>
         </div>
       </div>
 
-    </section>
+      </section>
+    </>
   );
 };
 

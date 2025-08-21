@@ -3,11 +3,12 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import SampleVideos from './components/SampleVideos';
 import About from './components/About';
-import ELearning from './components/ELearning';
+import LearningReinvented from './components/LearningReinvented';
+
 import Services from './components/Services';
-import Regulations from './components/Regulations';
-import Training from './components/Training';
+import OurClients from './components/OurClients';
 import WhyChooseUs from './components/WhyChooseUs';
+
 import Footer from './components/Footer';
 
 function App() {
@@ -33,10 +34,9 @@ function App() {
       <Hero />
       <SampleVideos />
       <About />
-      <ELearning />
+      <LearningReinvented />
       <Services />
-      <Regulations />
-      <Training />
+      <OurClients />
       <WhyChooseUs />
       <Footer />
     </div>

@@ -34,3 +34,322 @@
 	filter: blur(12px);
 	animation: shineSweep 4s linear infinite;
 }
+
+/* Moving testimonials animation */
+@keyframes scrollLeft {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-left {
+	animation: scrollLeft 30s linear infinite;
+}
+
+/* Logo Scroll Animation for Partner Companies */
+@keyframes logo-scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(-50%); }
+}
+
+@keyframes logo-scroll-reverse {
+	0% { transform: translateX(-50%); }
+	100% { transform: translateX(0); }
+}
+
+.animate-logo-scroll {
+	animation: logo-scroll 40s linear infinite;
+	will-change: transform;
+}
+
+.animate-logo-scroll-reverse {
+	animation: logo-scroll-reverse 40s linear infinite;
+	will-change: transform;
+}
+
+/* Pause animation on hover */
+.group:hover .animate-logo-scroll-reverse {
+	animation-play-state: paused;
+}
+
+/* Learning Reinvented Robot Animations */
+@keyframes robot-float {
+	0%, 100% { transform: translateY(0px) rotate(0deg); }
+	50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes particle-float {
+	0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+	25% { transform: translateY(-8px) translateX(3px); opacity: 1; }
+	50% { transform: translateY(-4px) translateX(6px); opacity: 0.8; }
+	75% { transform: translateY(-12px) translateX(-2px); opacity: 0.9; }
+}
+
+@keyframes robot-glow {
+	0%, 100% { filter: brightness(1) drop-shadow(0 0 5px rgba(14, 165, 233, 0.3)); }
+	50% { filter: brightness(1.1) drop-shadow(0 0 15px rgba(14, 165, 233, 0.6)); }
+}
+
+/* Custom slow animations for Hero images */
+@keyframes spin-slow {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-slow {
+	0%, 100% { opacity: 0.6; }
+	50% { opacity: 0.8; }
+}
+
+.animate-spin-slow {
+	animation: spin-slow 20s linear infinite;
+}
+
+.animate-pulse-slow {
+	animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Globe and Robot animations for new Hero design */
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+	0% { transform: translateY(0px) scale(0.8); }
+	50% { transform: translateY(-10px) scale(0.8); }
+	100% { transform: translateY(0px) scale(0.8); }
+}
+
+.globe-animation {
+	transform-origin: center center;
+	animation: spin 30s linear infinite;
+}
+
+.robot-svg {
+	animation: float 4s ease-in-out infinite;
+	position: absolute;
+	bottom: -50px;
+	right: 0px;
+	z-index: 10;
+}
+
+/* Enhanced Globe Animations */
+@keyframes pulse {
+	0%, 100% { opacity: 0.8; transform: scale(1); }
+	50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes flow {
+	0% { stroke-dashoffset: 0; }
+	100% { stroke-dashoffset: 20; }
+}
+
+@keyframes float-particle {
+	0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+	25% { transform: translateY(-10px) translateX(5px); opacity: 1; }
+	50% { transform: translateY(-5px) translateX(10px); opacity: 0.8; }
+	75% { transform: translateY(-15px) translateX(-5px); opacity: 0.9; }
+}
+
+@keyframes energy-wave {
+	0% { transform: scale(1); opacity: 0.3; }
+	50% { transform: scale(1.1); opacity: 0.5; }
+	100% { transform: scale(1); opacity: 0.3; }
+}
+
+@keyframes grid-pulse {
+	0%, 100% { opacity: 0.7; stroke-width: 2.5; }
+	50% { opacity: 1; stroke-width: 3.5; }
+}
+
+/* Apply animations to globe elements */
+.globe-main {
+	animation: spin 40s linear infinite;
+}
+
+.grid-line-1 {
+	animation: grid-pulse 3s ease-in-out infinite;
+}
+
+.grid-line-2 {
+	animation: grid-pulse 3s ease-in-out infinite 0.5s;
+}
+
+.grid-line-3 {
+	animation: grid-pulse 3s ease-in-out infinite 1s;
+}
+
+.data-line-1 {
+	stroke-dasharray: 10,5;
+	animation: flow 4s linear infinite;
+}
+
+.data-line-2 {
+	stroke-dasharray: 8,4;
+	animation: flow 4s linear infinite 2s;
+}
+
+.glow-dot-1 {
+	animation: pulse 2s ease-in-out infinite;
+}
+
+.glow-dot-2 {
+	animation: pulse 2s ease-in-out infinite 0.5s;
+}
+
+.glow-dot-3 {
+	animation: pulse 2s ease-in-out infinite 1s;
+}
+
+.glow-dot-4 {
+	animation: pulse 2s ease-in-out infinite 1.5s;
+}
+
+.particle-1 {
+	animation: float-particle 6s ease-in-out infinite;
+}
+
+.particle-2 {
+	animation: float-particle 6s ease-in-out infinite 1.5s;
+}
+
+.particle-3 {
+	animation: float-particle 6s ease-in-out infinite 3s;
+}
+
+.particle-4 {
+	animation: float-particle 6s ease-in-out infinite 4.5s;
+}
+
+.energy-wave-1 {
+	animation: energy-wave 4s ease-in-out infinite;
+}
+
+.energy-wave-2 {
+	animation: energy-wave 4s ease-in-out infinite 2s;
+}
+
+.tech-element-1, .tech-element-2 {
+	animation: pulse 3s ease-in-out infinite;
+}
+
+.connection-line {
+	stroke-dasharray: 5,3;
+	animation: flow 3s linear infinite;
+}
+
+.status-dot-3 {
+	animation: status-pulse 2s ease-in-out infinite 1.4s;
+}
+
+/* Our Clients Logo Scrolling Animations */
+@keyframes scrollRight {
+	0% { transform: translateX(-100%); }
+	100% { transform: translateX(0%); }
+}
+
+@keyframes scrollLeft {
+	0% { transform: translateX(0%); }
+	100% { transform: translateX(-100%); }
+}
+
+.animate-scroll-right {
+	animation: scrollRight 25s linear infinite;
+}
+
+.animate-scroll-left {
+	animation: scrollLeft 30s linear infinite;
+}
+
+/* Apply animations to robot elements */
+.robot-animation {
+	animation: robot-float 6s ease-in-out infinite, robot-glow 4s ease-in-out infinite;
+}
+
+.particle-1 {
+	animation: particle-float 8s ease-in-out infinite;
+}
+
+.particle-2 {
+	animation: particle-float 8s ease-in-out infinite 2s;
+}
+
+.particle-3 {
+	animation: particle-float 8s ease-in-out infinite 4s;
+}
+
+.particle-4 {
+	animation: particle-float 8s ease-in-out infinite 6s;
+}
+
+/* Additional particle animations */
+.particle-5 {
+	animation: particle-float 10s ease-in-out infinite 1s;
+}
+
+.particle-6 {
+	animation: particle-float 10s ease-in-out infinite 3s;
+}
+
+.particle-7 {
+	animation: particle-float 10s ease-in-out infinite 5s;
+}
+
+.particle-8 {
+	animation: particle-float 10s ease-in-out infinite 7s;
+}
+
+/* Circuit line animations */
+@keyframes circuit-flow {
+	0% { stroke-dashoffset: 0; }
+	100% { stroke-dashoffset: 20; }
+}
+
+.circuit-line-1 {
+	stroke-dasharray: 5,3;
+	animation: circuit-flow 6s linear infinite;
+}
+
+.circuit-line-2 {
+	stroke-dasharray: 5,3;
+	animation: circuit-flow 6s linear infinite 3s;
+}
+
+/* Fade in up animation */
+@keyframes fade-in-up {
+	0% { opacity: 0; transform: translateY(20px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+	animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Spin slow reverse animation */
+@keyframes spin-slow-reverse {
+	from { transform: rotate(360deg); }
+	to { transform: rotate(0deg); }
+}
+
+.animate-spin-slow-reverse {
+	animation: spin-slow-reverse 25s linear infinite;
+}
+
+/* Logo circular orbit animations */
+@keyframes logo-orbit-outer {
+	0% { transform: translate(-50%, -50%) rotate(0deg) translateY(-48px); }
+	100% { transform: translate(-50%, -50%) rotate(360deg) translateY(-48px); }
+}
+
+@keyframes logo-orbit-inner {
+	0% { transform: translate(-50%, -50%) rotate(0deg) translateY(40px); }
+	100% { transform: translate(-50%, -50%) rotate(360deg) translateY(40px); }
+}
+
+.animate-logo-orbit-outer {
+	animation: logo-orbit-outer 20s linear infinite;
+}
+
+.animate-logo-orbit-inner {
+	animation: logo-orbit-inner 15s linear infinite reverse;
+}

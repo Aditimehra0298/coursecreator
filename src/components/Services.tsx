@@ -1,57 +1,49 @@
 import { 
-  CreditCard, 
-  TrendingUp, 
-  Shield, 
+  Globe, 
+  Brain, 
   Zap, 
-  FileText, 
-  UserCheck,
-  Lock,
-  Globe
+  Building, 
+  Shield, 
+  Users
 } from 'lucide-react';
 
 const Services = () => {
   const services = [
     {
-      icon: CreditCard,
-      title: "Digital Banking",
-      description: "Real-time payments, mobile wallets & instant loans",
-      compliance: "Fully DORA & NIS2 aligned",
-      color: "from-blue-500 to-cyan-500"
+      icon: Globe,
+      title: "Multilingual Course Creation",
+      description: "Our platform empowers organizations to design and deliver learning courses in any language, making conformity assessment training accessible and effective for diverse audiences across the world.",
+      color: "from-teal-500 to-blue-500"
     },
     {
-      icon: TrendingUp,
-      title: "Wealth Management Platform",
-      description: "AI-driven portfolios with strict GDPR data governance",
-      compliance: "GDPR compliant AI",
+      icon: Brain,
+      title: "AI-Driven Creation Software",
+      description: "Leveraging advanced AI technology, our course creation software transforms standards and technical content into engaging, structured training modules—bringing the latest pedagogical techniques and gamification to every course.",
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: Zap,
+      title: "Fast & Consistent Global Deployment",
+      description: "AI automation streamlines the course creation process, enabling rapid deployment and consistent content quality. Multiple language support ensures harmonized standards and inclusive learning in every region.",
+      color: "from-orange-500 to-red-500"
+    },
+    {
+      icon: Building,
+      title: "Support for Businesses & SMEs",
+      description: "Our AI-designed training helps businesses and SMEs achieve accreditation and improve market access, offering tailored solutions to meet unique operational and regulatory needs.",
       color: "from-green-500 to-emerald-500"
     },
     {
       icon: Shield,
-      title: "Cyber Insurance Products",
-      description: "Tailored for SMEs & startups, reinforcing operational resilience",
-      compliance: "Resilience focused",
-      color: "from-purple-500 to-violet-500"
+      title: "Compliance & Security",
+      description: "Courses created on our secure, cloud-first infrastructure comply with international requirements for privacy and data protection, ensuring trust and reliability globally.",
+      color: "from-blue-500 to-cyan-500"
     },
     {
-      icon: Zap,
-      title: "Payment Gateway Services",
-      description: "Secure B2B e-commerce payments with DORA-compliant risk oversight",
-      compliance: "DORA compliant",
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      icon: FileText,
-      title: "Regulatory Reporting-as-a-Service (RaaS)",
-      description: "Automated GDPR, ISO, and EU compliance dashboards",
-      compliance: "Multi-standard compliance",
-      color: "from-teal-500 to-blue-500"
-    },
-    {
-      icon: UserCheck,
-      title: "Digital ID & eKYC",
-      description: "Biometric verification in compliance with GDPR, NIS2 & eIDAS",
-      compliance: "Triple compliance",
-      color: "from-pink-500 to-rose-500"
+      icon: Users,
+      title: "Collaboration & Customization",
+      description: "We offer flexible collaboration models—full content development, integration with your LMS, or partnership in script and course design—empowering you to deliver world-class learning experiences for every audience.",
+      color: "from-indigo-500 to-purple-500"
     }
   ];
 
@@ -67,8 +59,8 @@ const Services = () => {
           playsInline
           className="w-full h-full object-cover"
         />
-        {/* Blue gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-blue-900/80 to-gray-900/90"></div>
+        {/* Light blue gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100/90 via-blue-50/80 to-blue-200/90"></div>
       </div>
 
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,11 +71,11 @@ const Services = () => {
                 <Globe className="w-12 h-12 text-teal-400" />
               </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-               <span className="bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent">Core Services Of DORA & NIS2</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-800 mb-6">
+               <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Our Core Services</span>
             </h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Comprehensive cybersecurity and digital finance solutions designed for the modern EU regulatory landscape
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Comprehensive AI-powered learning solutions designed for global conformity assessment and professional development
             </p>
           </div>
           
@@ -91,7 +83,7 @@ const Services = () => {
             {services.map((service, index) => (
               <div 
                 key={index}
-                className="group bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-teal-500/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/20"
+                className="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-blue-200 hover:border-teal-500/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/20"
               >
                 <div className="flex items-center mb-6">
                   <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 animate-pulse`}>
@@ -99,20 +91,13 @@ const Services = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-teal-400 transition-colors">
+                <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-teal-600 transition-colors">
                   {service.title}
                 </h3>
                 
-                <p className="text-gray-300 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed">
                   {service.description}
                 </p>
-                
-                <div className="flex items-center">
-                  <Lock className="w-4 h-4 text-teal-400 mr-2" />
-                  <span className="text-sm text-teal-400 font-medium">
-                    {service.compliance}
-                  </span>
-                </div>
                 
                 {/* Animated border */}
                 <div className="mt-6 h-1 w-0 group-hover:w-full bg-gradient-to-r from-teal-400 to-blue-400 transition-all duration-500 rounded-full"></div>
