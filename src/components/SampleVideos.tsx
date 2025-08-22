@@ -12,7 +12,7 @@ const marqueeStyle = `
 `;
 
 type PlayableKey = 'greek' | 'english';
-type LanguageKey = PlayableKey | 'french' | 'german' | 'spanish';
+type LanguageKey = PlayableKey | 'french' | 'german' | 'spanish' | 'languages';
 
 const SampleVideos = () => {
   const refs = useRef<Record<LanguageKey, HTMLVideoElement | null>>({
@@ -21,15 +21,16 @@ const SampleVideos = () => {
     french: null,
     german: null,
     spanish: null,
+    languages: null,
   });
 
   const languages: Array<{ key: LanguageKey; label: string; src: string; capsuleClass?: string }> = [
-    { key: 'greek', label: 'Greek (Ελληνικά)', src: '/a8d.mp4', capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' },
-    { key: 'english', label: 'English', src: '/a9d.mp4', capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
-    { key: 'french', label: 'Français', src: '', capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' },
-    { key: 'german', label: 'Deutsch', src: '', capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' },
-    { key: 'spanish', label: 'Español', src: '', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
-    { key: 'languages', label: '+40 more languages', src: '', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
+    { key: 'greek', label: 'Greek (Ελληνικά)', src: 'public/a8d.mp4', capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' },
+    { key: 'english', label: 'English', src: 'public/a9d.mp4', capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
+    { key: 'french', label: 'Français', src: '/Untitled design (1).mp4', capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' },
+    { key: 'german', label: 'Deutsch', src: '/Untitled design (1).mp4', capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' },
+    { key: 'spanish', label: 'Español', src: '/Untitled design (1).mp4', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
+    { key: 'languages', label: '+40 more languages', src: '/Untitled design (1).mp4', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
   ];
 
   const [active, setActive] = useState<PlayableKey>('greek');
