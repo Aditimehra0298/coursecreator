@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 // Add custom CSS for marquee animation
 const marqueeStyle = `
@@ -25,8 +25,8 @@ const SampleVideos = () => {
   });
 
   const languages: Array<{ key: LanguageKey; label: string; src: string; capsuleClass?: string }> = [
-    { key: 'greek', label: 'Greek (Ελληνικά)', src: '/a8d_compressed.mp4', capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' },
-    { key: 'english', label: 'English', src: '/a9d_compressed.mp4', capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
+    { key: 'greek', label: 'Greek (Ελληνικά)', src: '/a8d_web.mp4', capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' },
+    { key: 'english', label: 'English', src: '/a9d_web.mp4', capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
     { key: 'french', label: 'Français', src: 'https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4', capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' },
     { key: 'german', label: 'Deutsch', src: 'https://cdn.pixabay.com/video/2023/11/11/188743-883619745_large.mp4', capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' },
     { key: 'spanish', label: 'Español', src: 'https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
@@ -34,6 +34,14 @@ const SampleVideos = () => {
   ];
 
   const [active, setActive] = useState<PlayableKey>('greek');
+  const [videoError, setVideoError] = useState<string | null>(null);
+
+  useEffect(() => {
+    console.log('SampleVideos mounted, checking video sources:');
+    languages.forEach(lang => {
+      console.log(`${lang.key}: ${lang.src}`);
+    });
+  }, []);
 
   const switchTo = (lang: PlayableKey) => {
     // Pause all videos and switch view
@@ -95,21 +103,48 @@ const SampleVideos = () => {
             {languages.filter(l => l.key === active).map(lang => (
               <div key={lang.key} className="block">
                 <div className="w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black" style={{ aspectRatio: '16 / 9' }}>
-                  <video
-                    src={lang.src}
-                    muted
-                    loop
-                    playsInline
-                    autoPlay
-                    controls
-                    className="w-full h-full object-contain bg-black"
-                    ref={el => { if (el) refs.current[lang.key] = el; }}
-                    onPlay={() => {
-                      (Object.keys(refs.current) as LanguageKey[]).forEach(k => {
-                        if (k !== lang.key) refs.current[k]?.pause();
-                      });
-                    }}
-                  />
+                  {videoError && videoError.includes(lang.label) ? (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">
+                      <div className="text-center">
+                        <div className="text-4xl mb-4">⚠️</div>
+                        <p className="text-lg font-semibold mb-2">Video Loading Error</p>
+                        <p className="text-sm text-gray-300 mb-4">{videoError}</p>
+                        <button 
+                          onClick={() => {
+                            setVideoError(null);
+                            const video = refs.current[lang.key];
+                            if (video) {
+                              video.load();
+                            }
+                          }}
+                          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+                        >
+                          Retry
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <video
+                      src={lang.src}
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      controls
+                      className="w-full h-full object-contain bg-black"
+                      ref={el => { if (el) refs.current[lang.key] = el; }}
+                      onPlay={() => {
+                        (Object.keys(refs.current) as LanguageKey[]).forEach(k => {
+                          if (k !== lang.key) refs.current[k]?.pause();
+                        });
+                      }}
+                      onError={(e) => {
+                        console.error('Video error:', e);
+                        console.error('Video src:', lang.src);
+                        setVideoError(`Failed to load video: ${lang.label}`);
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             ))}
