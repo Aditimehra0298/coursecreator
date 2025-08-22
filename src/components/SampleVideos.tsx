@@ -29,6 +29,7 @@ const SampleVideos = () => {
     { key: 'french', label: 'Français', src: '', capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' },
     { key: 'german', label: 'Deutsch', src: '', capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' },
     { key: 'spanish', label: 'Español', src: '', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
+    { key: 'languages', label: '+40 more languages', src: '', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
   ];
 
   const [active, setActive] = useState<PlayableKey>('greek');

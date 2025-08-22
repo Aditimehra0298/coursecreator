@@ -1,11 +1,11 @@
 // Form submission utility functions
-export const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz5wGxgAmPOZlox8U-_u35zHUmRIwH9FWiUXbJvMdE56EGqEFdEG-sm0T-6MjZDw02ydw/exec';
+export const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyqyaQDPdLYKSAJWWyZV_T61gdpOnZV4OTKXITxyujGhHOCRgMDTk_8AGhzbM_H6aZg/exec';
 
 export interface FormData {
   name: string;
   email: string;
   phone: string;
-  interest: string;
+  location: string;
   message: string;
   source: string;
 }
@@ -17,7 +17,8 @@ export const submitToGoogleSheet = async (formData: FormData): Promise<{ success
     form.append('name', formData.name);
     form.append('email', formData.email);
     form.append('phone', formData.phone);
-    form.append('interest', formData.interest);
+    form.append('location', formData.location);
+
     form.append('message', formData.message);
     form.append('source', formData.source);
     form.append('timestamp', new Date().toISOString());

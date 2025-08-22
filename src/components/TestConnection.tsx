@@ -32,7 +32,7 @@ const TestConnection = () => {
         name: 'Test User',
         email: 'test@example.com',
         phone: '+1234567890',
-        interest: 'Both',
+        location: 'Test City',
         message: 'This is a test submission',
         source: 'test'
       });

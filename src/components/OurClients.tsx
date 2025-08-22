@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import HeroForm from './HeroForm';
 
 const OurClients = () => {
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <section id="our-clients" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -54,13 +56,34 @@ const OurClients = () => {
               <p className="text-gray-700 text-sm mb-4">
                 Experience the transformative power of AI-driven learning solutions
               </p>
-              <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full text-sm font-semibold hover:from-blue-600 hover:to-teal-600 transition-all duration-200 transform hover:scale-105">
+              <button 
+                onClick={() => setShowForm(true)}
+                className="px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full text-sm font-semibold hover:from-blue-600 hover:to-teal-600 transition-all duration-200 transform hover:scale-105"
+              >
                 Get Started Today
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal Form */}
+      {showForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setShowForm(false)}></div>
+          <div className="relative z-10 w-full max-w-3xl mx-4">
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-teal-600/40 to-blue-600/40 text-white">
+                <h3 className="text-xl font-semibold">Get Started Today</h3>
+                <button onClick={() => setShowForm(false)} className="text-white/90 hover:text-white text-2xl leading-none">×</button>
+              </div>
+              <div className="p-6 sm:p-8 bg-gradient-to-br from-blue-900/30 to-teal-900/30">
+                <HeroForm />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

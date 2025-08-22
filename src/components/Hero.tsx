@@ -14,11 +14,11 @@ const Hero = () => {
       <div className="relative z-30 container mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-20 lg:pt-32">
         
         {/* Hero Section Content */}
-        <div className="relative max-w-7xl mx-auto mt-12 pb-24 lg:pb-32 flex flex-col items-center justify-center">
+        <div className="relative max-w-7xl mx-auto mt-4 sm:mt-8 lg:mt-12 pb-16 sm:pb-20 lg:pb-32 flex flex-col items-center justify-center">
           {/* Main content section */}
-          <div className="w-full text-center z-20 mb-12">
+          <div className="w-full text-center z-20 mb-6 sm:mb-8 lg:mb-12">
             {/* Course Creator Platform Capsule */}
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full shadow-lg mb-6 transform hover:scale-105 transition-transform duration-200">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full shadow-lg mb-4 sm:mb-6 transform hover:scale-105 transition-transform duration-200">
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
@@ -28,13 +28,13 @@ const Hero = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-blue-600">
                Empowering the AI Era of Assurance: Cutting-Edge Conformity Assessment Training
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-4 sm:mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
               <span className="text-teal-600 font-semibold">Evoke AI by DAMNART</span> delivers multilingual, video-based learning solutions for global conformity assessment. Collaborating with top QMS experts, we combine advanced AI, modern pedagogy, and creative design to make technical standards engaging, accessible, and future-ready.
             </p>
-            <p className="mt-4 text-base sm:text-lg text-gray-700 max-w-2xl mx-auto font-medium">
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-700 max-w-2xl mx-auto font-medium">
               Transforming how certification bodies train and grow—worldwide.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <button
                 onClick={() => setShowConsult(true)}
                 className="w-full sm:w-auto px-6 py-3 rounded-md text-white font-semibold bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -149,11 +149,11 @@ const Hero = () => {
                 <button onClick={() => setShowConsult(false)} className="text-white/90 hover:text-white text-2xl leading-none">×</button>
               </div>
               <div className="p-6 space-y-4">
-                <a href="tel:+918894915917" className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-3 transition-colors">
+                <a href="tel:+919262740889" className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-3 transition-colors">
                   <PhoneCircleIcon className="w-5 h-5" />
                   <span>+Phone Number</span>
                 </a>
-                <a href="https://wa.me/+918894915917" target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-3 transition-colors">
+                <a href="https://wa.me/+919262740889" target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-3 transition-colors">
                   <WhatsAppIcon className="w-5 h-5" />
                   <span>WhatsApp Chat</span>
                 </a>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import HeroForm from './HeroForm';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,9 +64,12 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <a href="#get-started" className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 whitespace-nowrap">
+            <button 
+              onClick={() => setShowForm(true)}
+              className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 whitespace-nowrap"
+            >
               Get Started
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,12 +91,12 @@ const Navigation = () => {
           isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="bg-white/98 backdrop-blur-md border-t border-gray-200 shadow-xl">
-            <div className="px-4 pt-6 pb-8 space-y-3">
+            <div className="px-4 py-2">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-4 py-4 text-gray-800 hover:text-blue-600 hover:bg-blue-50 font-semibold rounded-xl transition-all duration-200 border border-transparent hover:border-blue-200"
+                  className="block px-4 py-2 text-gray-800 hover:text-blue-600 hover:bg-blue-50 font-semibold rounded-lg transition-all duration-200 border border-transparent hover:border-blue-200"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     // Smooth scroll to section
@@ -104,19 +109,39 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="pt-4">
-                <a 
-                  href="#get-started" 
-                  className="block w-full bg-gradient-to-r from-teal-500 to-blue-600 text-white px-6 py-4 rounded-xl font-semibold text-center hover:from-teal-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-                  onClick={() => setIsMobileMenuOpen(false)}
+              <div className="pt-2">
+                <button 
+                  onClick={() => {
+                    setShowForm(true);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block w-full bg-gradient-to-r from-teal-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-center hover:from-teal-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   Get Started
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal Form */}
+      {showForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setShowForm(false)}></div>
+          <div className="relative z-10 w-full max-w-3xl mx-4">
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-teal-600/40 to-blue-600/40 text-white">
+                <h3 className="text-xl font-semibold">Get Started</h3>
+                <button onClick={() => setShowForm(false)} className="text-white/90 hover:text-white text-2xl leading-none">×</button>
+              </div>
+              <div className="p-6 sm:p-8 bg-gradient-to-br from-blue-900/30 to-teal-900/30">
+                <HeroForm />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
