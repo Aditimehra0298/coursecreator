@@ -30,12 +30,20 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     const video = videoRef.current;
     if (!video) return;
 
-    console.error(`Video error for ${label}:`, {
+    const errorDetails = {
       src: currentSrc,
       error: video.error,
       networkState: video.networkState,
-      readyState: video.readyState
-    });
+      readyState: video.readyState,
+      errorCode: video.error?.code,
+      errorMessage: video.error?.message
+    };
+
+    console.error(`Video error for ${label}:`, errorDetails);
+
+    // Check if it's a network error (code 2) or media error for large files
+    const isNetworkError = video.error?.code === 2;
+    const isLargeFileError = currentSrc.includes('/a8d.mp4') || currentSrc.includes('/a9d.mp4');
 
     // Try fallback source if available and we haven't tried it yet
     if (fallbackSrc && currentSrc !== fallbackSrc) {
@@ -48,7 +56,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     } else {
       setHasError(true);
       setIsLoading(false);
-      onError?.(`Failed to load video: ${label}`);
+      const errorMessage = isLargeFileError && isNetworkError 
+        ? `Large video file temporarily unavailable: ${label}` 
+        : `Failed to load video: ${label}`;
+      onError?.(errorMessage);
     }
   };
 
@@ -67,24 +78,37 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   if (hasError) {
     return (
       <div className={`w-full h-full flex items-center justify-center bg-gray-800 text-white ${className}`}>
-        <div className="text-center">
-          <div className="text-4xl mb-4">⚠️</div>
-          <p className="text-lg font-semibold mb-2">Video Unavailable</p>
-          <p className="text-sm text-gray-300 mb-4">Unable to load video content</p>
-          <button 
-            onClick={() => {
-              setCurrentSrc(src);
-              setHasError(false);
-              setIsLoading(true);
-              if (videoRef.current) {
-                videoRef.current.src = src;
-                videoRef.current.load();
-              }
-            }}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-          >
-            Retry
-          </button>
+        <div className="text-center p-8">
+          <div className="text-4xl mb-4">📹</div>
+          <p className="text-lg font-semibold mb-2">Video Demo Unavailable</p>
+          <p className="text-sm text-gray-300 mb-4">
+            {currentSrc.includes('/a8d.mp4') || currentSrc.includes('/a9d.mp4') 
+              ? "Your training video is temporarily unavailable. We're trying alternative sources to ensure you can see our content quality."
+              : "Unable to load video content at this time."
+            }
+          </p>
+          <div className="space-y-2">
+            <button 
+              onClick={() => {
+                setCurrentSrc(src);
+                setHasError(false);
+                setIsLoading(true);
+                if (videoRef.current) {
+                  videoRef.current.src = src;
+                  videoRef.current.load();
+                }
+              }}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors mr-2"
+            >
+              Retry
+            </button>
+            <a 
+              href="mailto:contact@damnart.com?subject=Video Demo Request"
+              className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors inline-block"
+            >
+              Request Demo
+            </a>
+          </div>
         </div>
       </div>
     );

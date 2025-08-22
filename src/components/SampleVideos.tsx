@@ -30,14 +30,14 @@ const SampleVideos = () => {
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
       src: '/a8d.mp4', 
-      fallbackSrc: '/a8d.mp4',
+      fallbackSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
       src: '/a9d.mp4', 
-      fallbackSrc: '/a9.mp4',
+      fallbackSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
@@ -173,8 +173,16 @@ const SampleVideos = () => {
           
           {/* Permission Notice - Close to Video */}
           <div className="mt-4 text-center">
-            <div className="bg-gray-100 text-gray-600 py-3 px-6 rounded-lg border border-gray-200 mb-6">
-              <p className="text-[10px] italic whitespace-nowrap overflow-hidden">This video is shared with the kind permission of Sustainable Futures Trainings, serving as a prime example of the exceptional quality and innovative instructional methodology that underpin our AI-driven learning content.</p>
+            <div className="bg-teal-50 text-teal-800 py-4 px-6 rounded-lg border border-teal-200 mb-6">
+              <p className="text-sm font-semibold mb-2">🎯 Actual Training Content</p>
+              <p className="text-xs leading-relaxed">
+                These videos showcase our actual Greek and English conformity assessment training content, 
+                demonstrating the quality and methodology of our AI-driven learning platform. 
+                <span className="font-semibold">Your videos will load first, with reliable fallbacks if needed.</span>
+              </p>
+              <p className="text-[10px] italic mt-2 opacity-75">
+                Content shared with the kind permission of Sustainable Futures Trainings, serving as prime examples of our exceptional quality and innovative instructional methodology.
+              </p>
             </div>
           </div>
 
