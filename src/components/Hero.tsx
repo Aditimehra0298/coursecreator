@@ -61,7 +61,7 @@ const Hero = () => {
                 playsInline
                 className="w-full h-full object-cover rounded-2xl shadow-2xl"
               >
-                <source src="https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4" type="video/mp4" />
+                <source src="/a8d" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               
