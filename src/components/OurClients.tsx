@@ -36,10 +36,10 @@ const OurClients = () => {
               }}
             >
               {/* Complete set of logos - repeated 4 times for seamless infinite loop */}
-              {Array(4).fill([ 'l3','l4','l5','l6','l7','l9','l10']).flat().map((logo, idx) => (
+              {Array(4).fill([ 'l3', 'l4', 'l5', 'l6', 'l7', 'l9', 'l10']).flat().map((logo, idx) => (
                 <img
                   key={`logo-${idx}-${logo}`}
-                  src={`/${logo}${logo.includes('.') ? '' : '.png'}`}
+                  src={`/image/${logo}.png`}
                   alt={`Partner Logo ${logo}`}
                   className="h-12 sm:h-16 md:h-20 w-auto object-contain drop-shadow-md flex-shrink-0 hover:scale-110 transition-transform duration-200"
                 />
