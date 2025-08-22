@@ -25,8 +25,8 @@ const SampleVideos = () => {
   });
 
   const languages: Array<{ key: LanguageKey; label: string; src: string; capsuleClass?: string }> = [
-    { key: 'greek', label: 'Greek (Ελληνικά)', src: '/a8d_browser.mp4', capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' },
-    { key: 'english', label: 'English', src: '/a9d_browser.mp4', capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
+    { key: 'greek', label: 'Greek (Ελληνικά)', src: '/a8d.mp4', capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' },
+    { key: 'english', label: 'English', src: '/a9d.mp4', capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
     { key: 'french', label: 'Français', src: 'https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4', capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' },
     { key: 'german', label: 'Deutsch', src: 'https://cdn.pixabay.com/video/2023/11/11/188743-883619745_large.mp4', capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' },
     { key: 'spanish', label: 'Español', src: 'https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
