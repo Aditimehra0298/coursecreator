@@ -47,7 +47,7 @@ const Footer = () => {
               <div>
                 <div className="flex items-center mb-6">
                   <div className="mr-3 [filter:drop-shadow(0_0_24px_rgba(59,130,246,0.65))]">
-                    <img src="public/l7.png" alt="DAMNART Logo" className="w-28 h-28 object-contain [filter:drop-shadow(0_0_10px_rgba(255,255,255,0.85))] brightness-110" />
+                    <img src="/l7.png" alt="DAMNART Logo" className="w-28 h-28 object-contain [filter:drop-shadow(0_0_10px_rgba(255,255,255,0.85))] brightness-110" />
                   </div>
                   <div>
                     <span className="text-2xl font-bold text-black">DamnArt</span>
