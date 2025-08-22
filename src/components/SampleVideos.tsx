@@ -1,161 +1,238 @@
-import React, { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import VideoPlayer from './VideoPlayer';
 
-type LanguageKey = 'greek' | 'english' | 'french' | 'spanish' | 'languages';
+// Add custom CSS for marquee animation
+const marqueeStyle = `
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+`;
 
-interface SampleVideosProps {
-  onVideoError?: (message: string) => void;
-}
+type PlayableKey = 'greek' | 'english';
+type LanguageKey = PlayableKey | 'french' | 'german' | 'spanish' | 'languages';
 
-const SampleVideos: React.FC<SampleVideosProps> = ({ onVideoError }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState<LanguageKey>('greek');
+const SampleVideos = () => {
+  const refs = useRef<Record<LanguageKey, HTMLVideoElement | null>>({
+    greek: null,
+    english: null,
+    french: null,
+    german: null,
+    spanish: null,
+    languages: null,
+  });
 
-  const languages: Array<{ 
-    key: LanguageKey; 
-    label: string; 
-    src: string; 
-    fallbackSrc: string;
-    backupSrc: string;
-    capsuleClass?: string; 
-  }> = [
+  const languages: Array<{ key: LanguageKey; label: string; src: string; capsuleClass?: string; fallbackSrc?: string }> = [
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-      fallbackSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-      backupSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+      src: '/a8d_optimized.mp4', 
+      fallbackSrc: '/a8d.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-      fallbackSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-      backupSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+      src: '/a9d_optimized.mp4', 
+      fallbackSrc: '/a9d.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
       key: 'french', 
       label: 'Français', 
       src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 
-      fallbackSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-      backupSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
       capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' 
+    },
+    { 
+      key: 'german', 
+      label: 'Deutsch', 
+      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 
+      capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' 
     },
     { 
       key: 'spanish', 
       label: 'Español', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-      fallbackSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-      backupSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-      capsuleClass: 'bg-orange-100 text-orange-800 hover:bg-orange-200' 
+      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 
+      capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
     { 
       key: 'languages', 
-      label: 'Multi-Language', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-      fallbackSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-      backupSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-      capsuleClass: 'bg-indigo-100 text-indigo-800 hover:bg-indigo-200' 
-    }
+      label: '+40 more languages', 
+      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', 
+      capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
+    },
   ];
 
-  const handleLanguageSelect = (language: LanguageKey) => {
-    setSelectedLanguage(language);
+  const [active, setActive] = useState<PlayableKey>('greek');
+  const [videoError, setVideoError] = useState<string | null>(null);
+
+
+  useEffect(() => {
+    console.log('SampleVideos mounted, checking video sources:');
+    languages.forEach(lang => {
+      console.log(`${lang.key}: ${lang.src}`);
+    });
+  }, []);
+
+  const switchTo = (lang: PlayableKey) => {
+    // Pause all videos and switch view
+    (Object.keys(refs.current) as LanguageKey[]).forEach(k => {
+      const vid = refs.current[k];
+      if (vid) vid.pause();
+    });
+    setActive(lang);
   };
 
-  const handleVideoLoad = () => {
-    // Video loaded successfully
-  };
+  // Removed 'All' capsule
 
-  const handleVideoError = (message: string) => {
-    onVideoError?.(message);
-  };
+  // No form gating here
+    return (
+    <>
+      <style>{marqueeStyle}</style>
+      <section id="sample-videos" className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            {/* AI-Powered Learning Badge */}
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full shadow-lg mb-6 transform hover:scale-105 transition-transform duration-200">
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span className="font-semibold text-xs">AI-Enhanced Learning</span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-600 mb-4">
+              Experience the Future of Conformity Assessment Training
+            </h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Witness how <span className="text-teal-600 font-semibold">Evoke AI by DAMNART</span> transforms complex technical standards into engaging, multilingual learning experiences that empower professionals worldwide.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mt-6">
+              <p className="text-sm text-gray-600 mb-3 w-full">Choose Your Learning Language:</p>
+              {languages.map(lang => {
+                const isPlayable = (lang.key === 'greek' || lang.key === 'english');
+                const isActive = active === lang.key;
+                const baseClass = 'px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 transform hover:scale-105';
+                const activeClass = 'bg-gradient-to-r from-blue-600 to-teal-600 text-white shadow-lg';
+                const normalClass = lang.capsuleClass || 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md';
+                const disabledClass = 'opacity-50 cursor-not-allowed pointer-events-none bg-gray-100 text-gray-400';
+                return (
+                  <button
+                    key={lang.key}
+                    onClick={isPlayable ? () => switchTo(lang.key as PlayableKey) : undefined}
+                    className={`${baseClass} ${isPlayable ? (isActive ? activeClass : normalClass) : disabledClass}`}
+                    aria-disabled={!isPlayable}
+                  >
+                    {lang.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-  const selectedVideo = languages.find(lang => lang.key === selectedLanguage);
+          <div className="grid grid-cols-1 gap-12 items-start">
+            {languages.filter(l => l.key === active).map(lang => (
+              <div key={lang.key} className="block">
+                <div className="w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black" style={{ aspectRatio: '16 / 9' }}>
+                  {videoError && videoError.includes(lang.label) ? (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">
+                      <div className="text-center">
+                        <div className="text-4xl mb-4">⚠️</div>
+                        <p className="text-lg font-semibold mb-2">Video Loading Error</p>
+                        <p className="text-sm text-gray-300 mb-4">{videoError}</p>
+                        <button 
+                          onClick={() => {
+                            setVideoError(null);
+                            const video = refs.current[lang.key];
+                            if (video) {
+                              video.load();
+                            }
+                          }}
+                          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+                        >
+                          Retry
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <VideoPlayer
+                      src={lang.src}
+                      fallbackSrc={lang.fallbackSrc}
+                      label={lang.label}
+                      className="w-full h-full"
+                      onError={(error) => setVideoError(error)}
+                    />
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Permission Notice - Close to Video */}
+          <div className="mt-4 text-center">
+            <div className="bg-teal-50 text-grey-800 py-4 px-6 rounded-lg border border-white-200 mb-6">
+              <p className="text-[10px] italic mt-2 opacity-75">
+                Content shared with the kind permission of Sustainable Futures Trainings, serving as prime examples of our exceptional quality and innovative instructional methodology.
+              </p>
+            </div>
+          </div>
 
-  return (
-    <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Experience Our Training Quality
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Watch sample training content in multiple languages to see the quality and effectiveness of our AI-driven methodology.
-          </p>
-        </div>
-
-        {/* Language Selection */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          {languages.map((language) => (
-            <button
-              key={language.key}
-              onClick={() => handleLanguageSelect(language.key)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 transform hover:scale-105 ${
-                selectedLanguage === language.key
-                  ? 'ring-2 ring-blue-500 ring-offset-2'
-                  : ''
-              } ${language.capsuleClass}`}
-            >
-              {language.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Video Player */}
-        {selectedVideo && (
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-              <div className="relative">
-                <VideoPlayer
-                  src={selectedVideo.src}
-                  fallbackSrc={selectedVideo.fallbackSrc}
-                  backupSrc={selectedVideo.backupSrc}
-                  label={selectedVideo.label}
-                  onLoad={handleVideoLoad}
-                  onError={handleVideoError}
-                />
+          {/* Enhanced Content Below Video */}
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-blue-50 to-teal-50 p-6 rounded-2xl border border-blue-200 shadow-lg">
+              <h3 className="text-xl font-bold text-blue-800 mb-3">
+                🚀 Ready to Transform Your Training?
+              </h3>
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                Experience the power of <span className="text-teal-600 font-semibold">AI-driven course creation</span> that makes complex standards accessible, engaging, and effective for learners worldwide.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <div className="flex items-center text-blue-700">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>Multilingual Support</span>
+                </div>
+                <div className="flex items-center text-teal-700">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>AI-Enhanced Learning</span>
+                </div>
+                <div className="flex items-center text-indigo-700">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>Global Standards</span>
+                </div>
               </div>
               
-              {/* Video Info */}
-              <div className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      {selectedVideo.label} Training Sample
-                    </h3>
-                    <p className="text-gray-600">
-                      High-quality training content demonstrating our AI-driven methodology
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm text-gray-500 mb-1">Training Quality</div>
-                    <div className="flex items-center space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+              {/* Visit Example Site Button */}
+              <div className="mt-6 text-center">
+                <a 
+                  href="https://sfteucybersecurity.netlify.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Visit Example Site
+                </a>
               </div>
             </div>
           </div>
-        )}
+          
 
-        {/* Notice */}
-        <div className="mt-8 text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-            <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-            </svg>
-            Professional Training Content - Optimized for Reliable Streaming
-          </div>
         </div>
       </div>
-    </section>
+
+      </section>
+    </>
   );
 };
 

@@ -4,23 +4,23 @@ const About = () => {
   const features = [
     {
       icon: Globe,
-      title: "INetQI-Aligned Quality Infrastructure Training",
-      description: "Our training programs promote Quality Infrastructure activities as a tool for sustainable economic development, aligning with International Network on Quality Infrastructure objectives and global standards."
+      title: "40+ Global QMS Professionals",
+      description: "Collaborative team of QMS auditing experts with synergistic relationships across IT and AI platforms, designing experiential QMS/ISO/IEC training programs."
     },
     {
       icon: Cloud,
-      title: "AIQI Consortium Integration", 
-      description: "As part of the AIQI Consortium, we address emerging risks and complex demands of AI technologies, preparing professionals to navigate the intersection of AI and quality infrastructure effectively."
+      title: "AI-Driven Training Design", 
+      description: "Mastered the art of designing transformative training using AI, advanced pedagogical sciences, gamification, and real-life case studies for maximum effectiveness."
     },
     {
       icon: Users,
-      title: "Global Conformity Assessment Expertise",
-      description: "Our team of 1,500+ professionals ensures Certification and Validation Bodies operate to the same standard worldwide, facilitating harmonized practices and global consistency."
+      title: "Multilingual Training Solutions",
+      description: "Innovative, localized training content designed specifically for certification bodies and their clients, featuring AI avatars and storytelling techniques."
     },
     {
       icon: Languages,
-      title: "SME Empowerment & Market Access",
-      description: "Supporting the IAF's World Accreditation Day 2025 theme, we help SMEs achieve accreditation, reduce costs, increase productivity, and access new markets through advanced training."
+      title: "Global Conformity Alignment",
+      description: "Our AI-designed training aligns with global conformity objectives, fostering competence and trust within the global conformity assessment system worldwide."
     }
   ];
 
@@ -44,10 +44,16 @@ const About = () => {
                   About <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">DamnArt</span>
                 </h2>
                 <p className="text-lg text-black-900 leading-relaxed max-w-4xl mx-auto text-center mb-6">
-                  Evoke AI is the Artificial Intelligence division of DAMNART, specializing in capacity building and sustainable economic development through Quality Infrastructure training. Our strategic alignment with IAF objectives, INetQI initiatives, and AIQI Consortium priorities positions us at the forefront of global quality infrastructure advancement.
+                  We have collaborated with a team of 40+ Global Quality Management Systems professionals to leverage their QMS auditing experience and synergistic relationships with experts, IT and AI platforms to design experiential QMS/ISO/IEC, AI-driven, digitally transformative, Video-based, self-paced and effective global conformity assessment training programs.
+                </p>
+                <p className="text-lg text-black-900 leading-relaxed max-w-4xl mx-auto text-center mb-6">
+                  Our team of practising conformity assessment auditors, subject matter experts, academicians, researchers, and AI experts have developed and mastered the art of designing transformative training, leveraging Artificial Intelligence and the advanced concepts of modern-day pedagogical sciences, gamification, and real-life case-studies.
+                </p>
+                <p className="text-lg text-black-900 leading-relaxed max-w-4xl mx-auto text-center mb-6">
+                  We specialize in developing innovative, multilingual training content designed specifically for certification bodies and their clients. With increasing demand for engaging, localized, and digital-first training solutions, we bring a unique blend of AI avatars, storytelling techniques, and certification-focused instructional design to make learning both effective and memorable.
                 </p>
                 <p className="text-lg text-black-900 leading-relaxed max-w-4xl mx-auto text-center">
-                  We deliver AI-designed conformity assessment training that addresses emerging risks and complex demands, preparing professionals to navigate the future of quality infrastructure. Our mission is to facilitate global collaboration, harmonize standards worldwide, and empower SMEs through accreditation, contributing to the development of a single worldwide program of conformity assessment that reduces risk for businesses and their customers.
+                  Our AI-designed conformity assessment training aligns well with global conformity objectives and fosters competence and trust within the global conformity assessment system. Our path-breaking, AI-enhanced Training Design Software offers a valuable contribution to your efforts in developing competent professionals for an increasingly AI-driven world and strengthening the integrity and effectiveness of global conformity assessment programs.
                 </p>
               </div>
 
