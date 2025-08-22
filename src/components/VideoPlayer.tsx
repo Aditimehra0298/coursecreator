@@ -3,16 +3,20 @@ import React, { useRef, useState, useEffect } from 'react';
 interface VideoPlayerProps {
   src: string;
   fallbackSrc?: string;
+  backupSrc?: string;
   label: string;
   className?: string;
+  onLoad?: () => void;
   onError?: (error: string) => void;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ 
   src, 
   fallbackSrc, 
+  backupSrc, 
   label, 
   className = "", 
+  onLoad,
   onError 
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -53,6 +57,14 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       setIsLoading(true);
       video.src = fallbackSrc;
       video.load();
+    } else if (backupSrc && currentSrc !== backupSrc) {
+      // Try backup source if fallback failed
+      console.log(`Trying backup source for ${label}: ${backupSrc}`);
+      setCurrentSrc(backupSrc);
+      setHasError(false);
+      setIsLoading(true);
+      video.src = backupSrc;
+      video.load();
     } else {
       setHasError(true);
       setIsLoading(false);
@@ -73,6 +85,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   const handleCanPlay = () => {
     setIsLoading(false);
+    onLoad?.();
   };
 
   if (hasError) {
