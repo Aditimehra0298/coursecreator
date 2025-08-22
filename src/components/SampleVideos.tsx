@@ -25,8 +25,8 @@ const SampleVideos = () => {
   });
 
   const languages: Array<{ key: LanguageKey; label: string; src: string; capsuleClass?: string }> = [
-    { key: 'greek', label: 'Greek (Ελληνικά)', src: '/a8d_web.mp4', capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' },
-    { key: 'english', label: 'English', src: '/a9d_web.mp4', capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
+    { key: 'greek', label: 'Greek (Ελληνικά)', src: '/a8d_browser.mp4', capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' },
+    { key: 'english', label: 'English', src: '/a9d_browser.mp4', capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' },
     { key: 'french', label: 'Français', src: 'https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4', capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' },
     { key: 'german', label: 'Deutsch', src: 'https://cdn.pixabay.com/video/2023/11/11/188743-883619745_large.mp4', capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' },
     { key: 'spanish', label: 'Español', src: 'https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4', capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' },
@@ -124,24 +124,34 @@ const SampleVideos = () => {
                       </div>
                     </div>
                   ) : (
-                    <video
+                                        <video
                       src={lang.src}
                       muted
                       loop
                       playsInline
                       preload="metadata"
                       controls
+                      crossOrigin="anonymous"
                       className="w-full h-full object-contain bg-black"
                       ref={el => { if (el) refs.current[lang.key] = el; }}
+                      onLoadStart={() => console.log(`Loading started for ${lang.label}`)}
+                      onLoadedMetadata={() => console.log(`Metadata loaded for ${lang.label}`)}
+                      onCanPlay={() => console.log(`Can play ${lang.label}`)}
                       onPlay={() => {
                         (Object.keys(refs.current) as LanguageKey[]).forEach(k => {
                           if (k !== lang.key) refs.current[k]?.pause();
                         });
                       }}
                       onError={(e) => {
-                        console.error('Video error:', e);
-                        console.error('Video src:', lang.src);
-                        setVideoError(`Failed to load video: ${lang.label}`);
+                        const video = e.target as HTMLVideoElement;
+                        console.error('Video error details:', {
+                          src: video.src,
+                          error: video.error,
+                          networkState: video.networkState,
+                          readyState: video.readyState,
+                          currentSrc: video.currentSrc
+                        });
+                        setVideoError(`Failed to load video: ${lang.label} (Code: ${video.error?.code || 'unknown'})`);
                       }}
                     />
                   )}
