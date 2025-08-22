@@ -5,11 +5,10 @@ import Hero from './components/Hero';
 import SampleVideos from './components/SampleVideos';
 import About from './components/About';
 import LearningReinvented from './components/LearningReinvented';
-
+import VideoCreatorTraining from './components/VideoCreatorTraining';
 import Services from './components/Services';
 import OurClients from './components/OurClients';
 import WhyChooseUs from './components/WhyChooseUs';
-
 import Footer from './components/Footer';
 
 function App() {
@@ -36,6 +35,7 @@ function App() {
       <SampleVideos />
       <About />
       <LearningReinvented />
+      <VideoCreatorTraining />
       <Services />
       <OurClients />
       <WhyChooseUs />

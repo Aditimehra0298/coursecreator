@@ -58,7 +58,7 @@ const LearningReinvented = () => {
                   <div className="absolute top-4 left-4 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 animate-pulse" style={{ animationDelay: '0s' }}></div>
                   <div className="absolute bottom-6 right-6 w-1.5 h-1.5 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping" style={{ animationDelay: '0.5s' }}></div>
                 </div>
-
+                
                 {/* From Standards to Experiences */}
                 <div className="group relative overflow-hidden bg-gradient-to-br from-teal-50/80 to-blue-50/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-teal-200/50 hover:shadow-2xl hover:shadow-teal-500/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2">
                   {/* Animated Background Elements */}
@@ -84,7 +84,7 @@ const LearningReinvented = () => {
                   <div className="absolute top-6 right-4 w-2 h-2 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100 animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                   <div className="absolute bottom-4 left-6 w-1.5 h-1.5 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping" style={{ animationDelay: '0.7s' }}></div>
                 </div>
-
+                
                 {/* For Certification Bodies & Clients */}
                 <div className="group relative overflow-hidden bg-gradient-to-br from-indigo-50/80 to-purple-50/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-indigo-200/50 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2">
                   {/* Animated Background Elements */}
