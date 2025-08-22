@@ -22,17 +22,17 @@ const Hero = () => {
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
-              <span className="font-semibold text-sm">Course Creator Platform</span>
+              <span className="font-semibold text-sm">IAF-Aligned Quality Infrastructure Training</span>
             </div>
       
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-blue-600">
-               Empowering the AI Era of Assurance: Cutting-Edge Conformity Assessment Training
+               Capacity Building for Sustainable Economic Development: AI-Enhanced Quality Infrastructure Training
             </h1>
             <p className="mt-4 sm:mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              <span className="text-teal-600 font-semibold">Evoke AI by DAMNART</span> delivers multilingual, video-based learning solutions for global conformity assessment. Collaborating with top QMS experts, we combine advanced AI, modern pedagogy, and creative design to make technical standards engaging, accessible, and future-ready.
+              <span className="text-teal-600 font-semibold">Evoke AI by DAMNART</span> delivers strategic training solutions aligned with IAF objectives, INetQI initiatives, and AIQI Consortium priorities. Our AI-designed conformity assessment training addresses emerging risks and complex demands, preparing professionals for the future of quality infrastructure.
             </p>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-700 max-w-2xl mx-auto font-medium">
-              Transforming how certification bodies train and grow—worldwide.
+              Empowering global conformity assessment through harmonized practices and sustainable development.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <button
@@ -61,7 +61,7 @@ const Hero = () => {
                 playsInline
                 className="w-full h-full object-cover rounded-2xl shadow-2xl"
               >
-                <source src="/a8d" type="video/mp4" />
+                <source src="https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               
