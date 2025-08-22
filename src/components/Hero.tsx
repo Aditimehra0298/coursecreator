@@ -50,8 +50,8 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Centered video section */}
-          <div className="relative w-full max-w-2xl flex justify-center items-center z-10">
+          {/* Video Container */}
+          <div className="relative w-full max-w-4xl flex items-center justify-center z-10">
             {/* Video Container */}
             <div className="w-full aspect-video relative">
               <video

@@ -113,8 +113,15 @@ const SampleVideos = () => {
             ))}
           </div>
           
+          {/* Permission Notice - Close to Video */}
+          <div className="mt-4 text-center">
+            <div className="bg-gray-100 text-gray-600 py-3 px-6 rounded-lg border border-gray-200 mb-6">
+              <p className="text-[10px] italic whitespace-nowrap overflow-hidden">This video is shared with the kind permission of Sustainable Futures Trainings, serving as a prime example of the exceptional quality and innovative instructional methodology that underpin our AI-driven learning content.</p>
+            </div>
+          </div>
+
           {/* Enhanced Content Below Video */}
-          <div className="mt-8 text-center">
+          <div className="text-center">
             <div className="bg-gradient-to-r from-blue-50 to-teal-50 p-6 rounded-2xl border border-blue-200 shadow-lg">
               <h3 className="text-xl font-bold text-blue-800 mb-3">
                 🚀 Ready to Transform Your Training?
@@ -142,15 +149,25 @@ const SampleVideos = () => {
                   <span>Global Standards</span>
                 </div>
               </div>
+              
+              {/* Visit Example Site Button */}
+              <div className="mt-6 text-center">
+                <a 
+                  href="https://sfteucybersecurity.netlify.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Visit Example Site
+                </a>
+              </div>
             </div>
           </div>
           
-          {/* Simple Grey Banner - Below Video */}
-          <div className="bg-gray-100 text-gray-500 py-3 mt-6 rounded-lg border border-gray-200">
-            <p className="text-center text-sm italic px-4">
-              This video is shared with the kind permission of Sustainable Futures Trainings, serving as a prime example of the exceptional quality and innovative instructional methodology that underpin our AI-driven learning content.
-            </p>
-          </div>
+
         </div>
       </div>
 

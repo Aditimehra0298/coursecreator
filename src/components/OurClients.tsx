@@ -34,7 +34,7 @@ const OurClients = () => {
               }}
             >
               {/* Complete set of logos - repeated 4 times for seamless infinite loop */}
-              {Array(4).fill([ 'l3', 'l4', 'l5', 'l6', 'l7', 'l9']).flat().map((logo, idx) => (
+              {Array(4).fill([ 'l3', 'l4', 'l5', 'l6', 'l7', 'l9','l10']).flat().map((logo, idx) => (
                 <img
                   key={`logo-${idx}-${logo}`}
                   src={`/image/${logo}.png`}
