@@ -33,3 +33,10 @@
   from = "/*.mp4"
   to = "/:splat"
   status = 200
+
+# Add headers for MP4 files
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=31536000"

@@ -29,15 +29,15 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d_optimized.mp4', 
-      fallbackSrc: '/a8d.mp4',
+      src: '/a8d_web.mp4', 
+      fallbackSrc: '/a8d_optimized.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: '/a9d_optimized.mp4', 
-      fallbackSrc: '/a9d.mp4',
+      src: '/a9d_web.mp4', 
+      fallbackSrc: '/a9d_optimized.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
