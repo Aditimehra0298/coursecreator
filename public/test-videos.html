@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test - Ultra Compatible Versions</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .video-container { margin: 20px 0; }
+        video { max-width: 100%; border: 1px solid #ccc; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Testing Ultra-Compatible Videos</h1>
+    
+    <div class="video-container">
+        <h3>Greek Video (a8d_ultra_web.mp4)</h3>
+        <video 
+            src="/a8d_ultra_web.mp4" 
+            controls 
+            preload="metadata"
+            width="480"
+            height="270"
+            onerror="this.nextElementSibling.textContent = 'Error: ' + (this.error ? this.error.message : 'Unknown error')"
+            onloadstart="this.nextElementSibling.textContent = 'Loading...'"
+            oncanplay="this.nextElementSibling.textContent = 'Success: Video can play!'"
+        ></video>
+        <div class="status"></div>
+    </div>
+
+    <div class="video-container">
+        <h3>English Video (a9d_ultra_web.mp4)</h3>
+        <video 
+            src="/a9d_ultra_web.mp4" 
+            controls 
+            preload="metadata"
+            width="480"
+            height="270"
+            onerror="this.nextElementSibling.textContent = 'Error: ' + (this.error ? this.error.message : 'Unknown error')"
+            onloadstart="this.nextElementSibling.textContent = 'Loading...'"
+            oncanplay="this.nextElementSibling.textContent = 'Success: Video can play!'"
+        ></video>
+        <div class="status"></div>
+    </div>
+
+    <div class="video-container">
+        <h3>File Sizes</h3>
+        <ul>
+            <li>a8d_ultra_web.mp4: 17MB (480x270, H.264 baseline)</li>
+            <li>a9d_ultra_web.mp4: 17MB (480x270, H.264 baseline)</li>
+        </ul>
+    </div>
+</body>
+</html>
