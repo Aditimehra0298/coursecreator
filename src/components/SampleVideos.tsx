@@ -28,8 +28,8 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a9d.mp4', 
-      fallbackSrc: '/a9d.mp4',
+      src: '/a8d.mp4', 
+      fallbackSrc: '/a8d.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
