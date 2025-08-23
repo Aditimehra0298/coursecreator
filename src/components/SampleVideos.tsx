@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import VideoPlayer from './VideoPlayer';
 
 // Add custom CSS for marquee animation
 const marqueeStyle = `
@@ -29,15 +28,15 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d.mp4', 
-      fallbackSrc: '/a8d.mp4',
+      src: '/a9d.mp4', 
+      fallbackSrc: '/a8_web.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
       src: '/a9d.mp4', 
-      fallbackSrc: '/a9d.mp4',
+      fallbackSrc: '/A9_web.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
@@ -69,7 +68,6 @@ const SampleVideos = () => {
   const [active, setActive] = useState<PlayableKey>('greek');
   const [videoError, setVideoError] = useState<string | null>(null);
 
-
   useEffect(() => {
     console.log('SampleVideos mounted, checking video sources:');
     languages.forEach(lang => {
@@ -84,6 +82,11 @@ const SampleVideos = () => {
       if (vid) vid.pause();
     });
     setActive(lang);
+  };
+
+  const handleVideoError = (lang: LanguageKey, error: string) => {
+    console.log(`Video error for ${lang}:`, error);
+    setVideoError(`${lang} - ${error}`);
   };
 
   // Removed 'All' capsule
@@ -158,12 +161,30 @@ const SampleVideos = () => {
                       </div>
                     </div>
                   ) : (
-                    <VideoPlayer
+                    <video
+                      ref={(el) => {
+                        refs.current[lang.key] = el;
+                      }}
                       src={lang.src}
-                      fallbackSrc={lang.fallbackSrc}
-                      label={lang.label}
-                      className="w-full h-full"
-                      onError={(error) => setVideoError(error)}
+                      className="w-full h-full object-cover"
+                      controls
+                      preload="metadata"
+                      crossOrigin="anonymous"
+                      onError={(e) => {
+                        const target = e.target as HTMLVideoElement;
+                        const error = target.error;
+                        console.log(`Video error details:`, {
+                          currentSrc: target.currentSrc,
+                          error: error,
+                          networkState: target.networkState,
+                          readyState: target.readyState,
+                          src: target.src
+                        });
+                        handleVideoError(lang.key, error ? error.message : 'Unknown error');
+                      }}
+                      onLoadStart={() => console.log(`Loading started for ${lang.label}`)}
+                      onLoadedMetadata={() => console.log(`Metadata loaded for ${lang.label}`)}
+                      onCanPlay={() => console.log(`Can play ${lang.label}`)}
                     />
                   )}
                 </div>
