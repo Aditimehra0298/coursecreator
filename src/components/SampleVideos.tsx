@@ -28,14 +28,14 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4', 
+      src: '/a8d.mp4', 
       fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', 
+      src: '/a9d.mp4', 
       fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
