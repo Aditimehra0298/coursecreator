@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://your-domain.netlify.app/sitemap.xml
-
-# Favicon
-Disallow: /favicon.ico
