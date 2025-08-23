@@ -28,14 +28,14 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d_basic.mp4', 
+      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4', 
       fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: '/a9d_basic.mp4', 
+      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', 
       fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
@@ -180,7 +180,15 @@ const SampleVideos = () => {
                           readyState: target.readyState,
                           src: target.src
                         });
-                        handleVideoError(lang.key, error ? error.message : 'Unknown error');
+                        
+                        // Try fallback if available
+                        if (lang.fallbackSrc && target.src !== lang.fallbackSrc) {
+                          console.log(`Trying fallback: ${lang.fallbackSrc}`);
+                          target.src = lang.fallbackSrc;
+                          target.load();
+                        } else {
+                          handleVideoError(lang.key, error ? error.message : 'Unknown error');
+                        }
                       }}
                       onLoadStart={() => console.log(`Loading started for ${lang.label}`)}
                       onLoadedMetadata={() => console.log(`Metadata loaded for ${lang.label}`)}

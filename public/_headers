@@ -1,0 +1,44 @@
+# Video files
+*.mp4
+  Content-Type: video/mp4
+  X-Content-Type-Options: nosniff
+
+# Audio files
+*.aac
+  Content-Type: audio/aac
+  X-Content-Type-Options: nosniff
+
+# Images
+*.png
+  Content-Type: image/png
+  X-Content-Type-Options: nosniff
+
+*.jpg
+  Content-Type: image/jpeg
+  X-Content-Type-Options: nosniff
+
+*.jpeg
+  Content-Type: image/jpeg
+  X-Content-Type-Options: nosniff
+
+*.gif
+  Content-Type: image/gif
+  X-Content-Type-Options: nosniff
+
+*.svg
+  Content-Type: image/svg+xml
+  X-Content-Type-Options: nosniff
+
+# JavaScript and CSS
+*.js
+  Content-Type: application/javascript
+  X-Content-Type-Options: nosniff
+
+*.css
+  Content-Type: text/css
+  X-Content-Type-Options: nosniff
+
+# HTML
+*.html
+  Content-Type: text/html
+  X-Content-Type-Options: nosniff

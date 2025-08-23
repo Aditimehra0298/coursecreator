@@ -1,0 +1,12 @@
+# Handle client-side routing
+/* /index.html 200
+
+# Handle video files with proper MIME types
+*.mp4 /index.html 200
+
+# Handle other media files
+*.webm /index.html 200
+*.ogg /index.html 200
+
+# Force HTTPS
+http://damnartcoursecreatorai.netlify.app/* https://damnartcoursecreatorai.netlify.app/:splat 301!
