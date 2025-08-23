@@ -29,14 +29,14 @@ const SampleVideos = () => {
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
       src: '/a9d.mp4', 
-      fallbackSrc: '/a8_web.mp4',
+      fallbackSrc: '/a9d.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
       src: '/a9d.mp4', 
-      fallbackSrc: '/A9_web.mp4',
+      fallbackSrc: '/a9d.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
