@@ -49,8 +49,8 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className={`text-sm xl:text-base font-semibold transition-colors hover:text-teal-600 whitespace-nowrap ${
-                  isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-black'
+                className={`text-sm xl:text-base font-semibold transition-colors hover:text-teal-300 whitespace-nowrap ${
+                  isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white'
                 }`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -71,7 +71,7 @@ const Navigation = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`p-3 rounded-lg transition-all duration-200 hover:bg-gray-100/80 ${
-                isScrolled || isMobileMenuOpen ? 'text-gray-800 bg-white/50' : 'text-black bg-white/20'
+                isScrolled || isMobileMenuOpen ? 'text-gray-800 bg-white/50' : 'text-white bg-white/20'
               }`}
               aria-label="Toggle mobile menu"
             >

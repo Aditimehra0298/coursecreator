@@ -6,120 +6,59 @@ const Hero = () => {
   const [showConsult, setShowConsult] = useState(false);
 
   return (
-    <section id="hero" className="relative min-h-screen overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-blue-200 z-0"></div>
-    
-      {/* Content */}
-      <div className="relative z-30 container mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-20 lg:pt-32">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ zIndex: -1 }}
+        >
+          <source src="https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      </div>
+
+      {/* Content Overlay */}
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div className="mb-6">
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full shadow-lg mb-6 transform hover:scale-105 transition-transform duration-200">
+            <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span className="font-semibold text-xs">AI-Enhanced Learning</span>
+          </div>
+        </div>
         
-        {/* Hero Section Content */}
-        <div className="relative max-w-7xl mx-auto mt-4 sm:mt-8 lg:mt-12 pb-16 sm:pb-20 lg:pb-32 flex flex-col items-center justify-center">
-          {/* Main content section */}
-          <div className="w-full text-center z-20 mb-6 sm:mb-8 lg:mb-12">
-            {/* Course Creator Platform Capsule */}
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full shadow-lg mb-4 sm:mb-6 transform hover:scale-105 transition-transform duration-200">
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <span className="font-semibold text-sm">IAF-Aligned Quality Infrastructure Training</span>
-            </div>
-      
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-blue-600">
-               Capacity Building for Sustainable Economic Development: AI-Enhanced Quality Infrastructure Training
-            </h1>
-            <p className="mt-4 sm:mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              <span className="text-teal-600 font-semibold">Evoke AI by DAMNART</span> delivers strategic training solutions aligned with IAF objectives, INetQI initiatives, and AIQI Consortium priorities. Our AI-designed conformity assessment training addresses emerging risks and complex demands, preparing professionals for the future of quality infrastructure.
-            </p>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-700 max-w-2xl mx-auto font-medium">
-              Empowering global conformity assessment through harmonized practices and sustainable development.
-            </p>
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button
-                onClick={() => setShowConsult(true)}
-                className="w-full sm:w-auto px-6 py-3 rounded-md text-white font-semibold bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-              >
-                Book a Demo
-              </button>
-              <button
-                onClick={() => setShowForm(true)}
-                className="w-full sm:w-auto px-6 py-3 rounded-md text-gray-700 font-semibold bg-white border border-gray-300 hover:bg-gray-50 transition-all duration-200 shadow-md hover:shadow-lg"
-              >
-                Start Your Project
-              </button>
-            </div>
-          </div>
-          
-          {/* Video Container */}
-          <div className="relative w-full max-w-4xl flex items-center justify-center z-10">
-            {/* Video Container */}
-            <div className="w-full aspect-video relative">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover rounded-2xl shadow-2xl"
-              >
-                <source src="https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              {/* Video Overlay for better visibility */}
-              <div className="absolute inset-0 bg-black/10 rounded-2xl"></div>
-            </div>
-          </div>
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          Empowering the AI Era of Assurance: Cutting-Edge Conformity Assessment Training Design
+        </h1>
+        
+        <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto mb-8 leading-relaxed">
+          Witness how <span className="text-teal-300 font-semibold">Evoke AI by DAMNART</span> transforms complex technical standards into engaging, multilingual learning experiences that empower professionals worldwide.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <button
+            onClick={() => setShowForm(true)}
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white text-lg font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            Get Started
+          </button>
+          <button
+            onClick={() => document.getElementById('sample-videos')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-8 py-4 bg-white bg-opacity-20 hover:bg-opacity-30 text-white text-lg font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 border border-white border-opacity-30"
+          >
+            Watch Demo
+          </button>
         </div>
       </div>
       
-      {/* Curved Waves Bottom */}
-      <div className="absolute bottom-0 left-0 w-full z-20">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-24">
-          <path 
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
-            opacity=".3" 
-            fill="#94a3b8"
-          ></path>
-          <path 
-            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.46,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,65.6-49.07V0Z" 
-            opacity=".6" 
-            fill="#64748b"
-          ></path>
-          <path 
-            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" 
-            fill="#475569"
-          ></path>
-        </svg>
-      </div>
-      
-      {/* Curved Dividing Waves - Like ContactPigeon Style */}
-      <div className="absolute bottom-0 left-0 w-full z-30">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-32">
-          {/* Main curved wave - more pronounced like ContactPigeon */}
-          <path 
-            d="M0,120 Q150,60 300,90 Q450,40 600,80 Q750,20 900,70 Q1050,50 1200,90 L1200,120 Z" 
-            fill="#f8fafc"
-            opacity="0.95"
-          ></path>
-          
-          {/* Secondary wave layer */}
-          <path 
-            d="M0,120 Q200,80 400,100 Q600,60 800,90 Q1000,40 1200,80 L1200,120 Z" 
-            fill="#e2e8f0"
-            opacity="0.8"
-          ></path>
-          
-          {/* Accent wave line */}
-          <path 
-            d="M0,120 Q100,70 250,90 Q400,50 550,80 Q700,30 850,70 Q1000,50 1150,80" 
-            stroke="#cbd5e1" 
-            strokeWidth="2" 
-            fill="none"
-            opacity="0.6"
-          ></path>
-        </svg>
-      </div>
-
       {/* Modal Form */}
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">

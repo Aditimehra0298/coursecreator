@@ -72,7 +72,7 @@ const Services = () => {
               </div>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-800 mb-6">
-               <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Our Core Services</span>
+               <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Our Core Approach</span>
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
               Strategic AI-powered training solutions aligned with IAF objectives, INetQI initiatives, and AIQI Consortium priorities for global quality infrastructure advancement

@@ -73,14 +73,14 @@ const WhyChooseUs = () => {
               <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
-              <span className="font-semibold text-xs">AI-Powered Solutions</span>
+              <span className="font-semibold text-xs">AI-Powered Training Courses</span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-800 mb-6">
               Why Choose <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Evoke AI, DAMNART</span>
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Transform your business operations with our innovative AI-powered solutions that drive efficiency, growth, and competitive advantage
+              Transform your Course Training operations with our innovative AI-powered solutions that drive efficiency, growth, and competitive advantage
             </p>
           </div>
           
@@ -224,10 +224,10 @@ const WhyChooseUs = () => {
           <div className="text-center">
             <div className="bg-gradient-to-r from-teal-500/20 to-blue-500/20 backdrop-blur-sm rounded-3xl p-12 border border-teal-500/30">
               <h3 className="text-3xl font-bold text-black mb-4">
-                Ready to transform your business with AI-powered solutions?
+                Ready to transform your business with AI-powered Training Courses?
               </h3>
               <p className="text-lg text-black-300 mb-8">
-                Partner with Evoke AI, DAMNART to unlock your business potential.
+                Partner with Evoke AI, DAMNART to unlock your course training potential.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -11,7 +11,7 @@ const VideoCreatorTraining = () => {
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-blue-600 mb-4 sm:mb-6">
-            Learn. Create. Inspire – Video Based Training Creator Course
+            Learn. Create. Inspire – Video Based Training Course Creator
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto">
             Explore our platform today and discover the future of interactive learning.

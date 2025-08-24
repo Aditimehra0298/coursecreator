@@ -5,22 +5,20 @@ const About = () => {
     {
       icon: Globe,
       title: "40+ Global QMS Professionals",
-      description: "Collaborative team of QMS auditing experts with synergistic relationships across IT and AI platforms, designing experiential QMS/ISO/IEC training programs."
     },
     {
       icon: Cloud,
       title: "AI-Driven Training Design", 
-      description: "Mastered the art of designing transformative training using AI, advanced pedagogical sciences, gamification, and real-life case studies for maximum effectiveness."
+     
     },
     {
       icon: Users,
       title: "Multilingual Training Solutions",
-      description: "Innovative, localized training content designed specifically for certification bodies and their clients, featuring AI avatars and storytelling techniques."
     },
     {
       icon: Languages,
       title: "Global Conformity Alignment",
-      description: "Our AI-designed training aligns with global conformity objectives, fostering competence and trust within the global conformity assessment system worldwide."
+      
     }
   ];
 
@@ -41,41 +39,87 @@ const About = () => {
             <div>
               <div className="mb-10 text-center">
                 <h2 id="about-title" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 text-center">
-                  About <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">DamnArt</span>
+                  About <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent"> Evoke AI , DamnArt</span>
                 </h2>
-                <p className="text-lg text-black-900 leading-relaxed max-w-4xl mx-auto text-center mb-6">
-                  We have collaborated with a team of 40+ Global Quality Management Systems professionals to leverage their QMS auditing experience and synergistic relationships with experts, IT and AI platforms to design experiential QMS/ISO/IEC, AI-driven, digitally transformative, Video-based, self-paced and effective global conformity assessment training programs.
-                </p>
-                <p className="text-lg text-black-900 leading-relaxed max-w-4xl mx-auto text-center mb-6">
-                  Our team of practising conformity assessment auditors, subject matter experts, academicians, researchers, and AI experts have developed and mastered the art of designing transformative training, leveraging Artificial Intelligence and the advanced concepts of modern-day pedagogical sciences, gamification, and real-life case-studies.
-                </p>
-                <p className="text-lg text-black-900 leading-relaxed max-w-4xl mx-auto text-center mb-6">
-                  We specialize in developing innovative, multilingual training content designed specifically for certification bodies and their clients. With increasing demand for engaging, localized, and digital-first training solutions, we bring a unique blend of AI avatars, storytelling techniques, and certification-focused instructional design to make learning both effective and memorable.
-                </p>
-                <p className="text-lg text-black-900 leading-relaxed max-w-4xl mx-auto text-center">
-                  Our AI-designed conformity assessment training aligns well with global conformity objectives and fosters competence and trust within the global conformity assessment system. Our path-breaking, AI-enhanced Training Design Software offers a valuable contribution to your efforts in developing competent professionals for an increasingly AI-driven world and strengthening the integrity and effectiveness of global conformity assessment programs.
-                </p>
+                
               </div>
 
-              <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                {features.map((feature, index) => (
-                  <li key={index} className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-6">
-                        <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-teal-500 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                          <feature.icon className="w-8 h-8 text-white" />
+              {/* Grid Layout for Content */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12 mb-16">
+                {/* Grid Item 1: QMS Experience Meets AI Innovation */}
+                <div className="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-2xl border border-blue-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center">
+                    <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Where QMS Experience Meets AI Innovation
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    We have collaborated with a team of 40+ Global Quality Management Systems professionals to leverage their QMS auditing experience and synergistic relationships with experts, IT and AI platforms to design experiential QMS/ISO/IEC, AI-driven, digitally transformative, Video-based, self-paced and effective global conformity assessment training programs.
+                  </p>
+                </div>
+
+                {/* Grid Item 2: Pedagogy Meets Artificial Intelligence */}
+                <div className="bg-gradient-to-br from-teal-50 to-green-50 p-6 rounded-2xl border border-teal-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <h3 className="text-xl font-bold text-teal-800 mb-4 flex items-center">
+                    <svg className="w-6 h-6 mr-3 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                      <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    Where Pedagogy Meets Artificial Intelligence
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    Our team of practising conformity assessment auditors, subject matter experts, academicians, researchers, and AI experts have developed and mastered the art of designing transformative training, leveraging Artificial Intelligence and the advanced concepts of modern-day pedagogical sciences, gamification, and real-life case-studies.
+                  </p>
+                </div>
+
+                {/* Grid Item 3: Digital-First Training Designed for Global Impact */}
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <h3 className="text-xl font-bold text-green-800 mb-4 flex items-center">
+                    <svg className="w-6 h-6 mr-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                      <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                    </svg>
+                    Digital-First Training Designed for Global Impact
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    We specialize in developing innovative, multilingual training content designed specifically for certification bodies and their clients. With increasing demand for engaging, localized, and digital-first training solutions, we bring a unique blend of AI avatars, storytelling techniques, and certification-focused instructional design to make learning both effective and memorable.
+                  </p>
+                </div>
+
+                {/* Grid Item 4: Strengthening Global Conformity Through AI Innovation */}
+                <div className="bg-gradient-to-br from-emerald-50 to-blue-50 p-6 rounded-2xl border border-emerald-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <h3 className="text-xl font-bold text-emerald-800 mb-4 flex items-center">
+                    <svg className="w-6 h-6 mr-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                      <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    Strengthening Global Conformity Through AI Innovation
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    Our AI-designed conformity assessment training aligns well with global conformity objectives and fosters competence and trust within the global conformity assessment system. Our path-breaking, AI-enhanced Training Design Software offers a valuable contribution to your efforts in developing competent professionals for an increasingly AI-driven world and strengthening the integrity and effectiveness of global conformity assessment programs.
+                  </p>
+                </div>
+              </div>
+
+              {/* Features Grid with Proper Spacing */}
+              <div className="mt-20">
+                <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 px-8">
+                  {features.map((feature, index) => (
+                    <li key={index} className="group bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 w-full max-w-sm mx-auto">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0 mr-4">
+                          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                            <feature.icon className="w-5 h-5 text-white" />
+                          </div>
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
+                            {feature.title}
+                          </h3>
                         </div>
                       </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
