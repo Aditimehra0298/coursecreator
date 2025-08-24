@@ -28,39 +28,39 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/jkl.mp4', 
-      fallbackSrc: '/a8d_basic.mp4',
+      src: '/a8d.mp4', 
+      fallbackSrc: '/a8d.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
       src: '/a9d.mp4', 
-      fallbackSrc: '/a9d_basic.mp4',
+      fallbackSrc: '/a9d.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
       key: 'french', 
       label: 'Français', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 
+      src: '/a8d.mp4', 
       capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' 
     },
     { 
       key: 'german', 
       label: 'Deutsch', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 
+      src: '/a9d.mp4', 
       capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' 
     },
     { 
       key: 'spanish', 
       label: 'Español', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 
+      src: '/a8d.mp4', 
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
     { 
       key: 'languages', 
       label: '+40 more languages', 
-      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', 
+      src: '/a9d.mp4', 
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
   ];
@@ -168,8 +168,10 @@ const SampleVideos = () => {
                       src={lang.src}
                       className="w-full h-full object-cover"
                       controls
-                      preload="metadata"
-                      crossOrigin="anonymous"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
                       onError={(e) => {
                         const target = e.target as HTMLVideoElement;
                         const error = target.error;
@@ -190,9 +192,6 @@ const SampleVideos = () => {
                           handleVideoError(lang.key, error ? error.message : 'Unknown error');
                         }
                       }}
-                      onLoadStart={() => console.log(`Loading started for ${lang.label}`)}
-                      onLoadedMetadata={() => console.log(`Metadata loaded for ${lang.label}`)}
-                      onCanPlay={() => console.log(`Can play ${lang.label}`)}
                     />
                   )}
                 </div>

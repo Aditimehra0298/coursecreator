@@ -9,32 +9,32 @@ const Hero = () => {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
           className="w-full h-full object-cover"
           style={{ zIndex: -1 }}
-        >
-          <source src="https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+              >
+                <source src="https://cdn.pixabay.com/video/2023/04/15/159053-818026314_large.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      </div>
-
+            </div>
+            
       {/* Content Overlay */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="mb-6">
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full shadow-lg mb-6 transform hover:scale-105 transition-transform duration-200">
             <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
+              </svg>
             <span className="font-semibold text-xs">AI-Enhanced Learning</span>
-          </div>
         </div>
-        
+      </div>
+      
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
           Empowering the AI Era of Assurance: Cutting-Edge Conformity Assessment Training Design
         </h1>
@@ -58,7 +58,7 @@ const Hero = () => {
           </button>
         </div>
       </div>
-      
+
       {/* Modal Form */}
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
