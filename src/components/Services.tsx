@@ -12,25 +12,25 @@ const Services = () => {
     {
       icon: Globe,
       title: "Capacity Building & Sustainable Development",
-      description: "Promoting Quality Infrastructure activities as a tool for sustainable economic development. Our training programs align with INetQI objectives, building robust quality infrastructure through effective capacity building initiatives.",
+      description: "Our AI-designed training programs align with INetQI objectives by building robust quality infrastructure and driving effective capacity-building initiatives. By promoting Quality Infrastructure activities as a strategic tool for sustainable economic development, we empower professionals and organizations to strengthen competence, trust, and resilience in a rapidly evolving global landscape.",
       color: "from-teal-500 to-blue-500"
     },
     {
       icon: Brain,
       title: "AI & Quality Infrastructure Integration",
-      description: "Addressing emerging risks and complex demands of AI through membership in the AIQI Consortium. Our AI-designed conformity assessment training prepares professionals to navigate the intersection of AI and quality infrastructure effectively.",
+      description: "Addressing the emerging risks and complex demands of Artificial Intelligence through our membership in the AIQI Consortium, we deliver AI-designed conformity assessment training that equips professionals to effectively navigate the critical intersection of AI and Quality Infrastructure.",
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: Zap,
       title: "Global Conformity Assessment Programs",
-      description: "Ensuring Certification and Validation Bodies operate to the same standard worldwide. Our harmonized training programs facilitate global consistency and competence through standardized practices and methodologies.",
+      description: "Our harmonized training programs drive global consistency and competence by promoting standardized practices and methodologies, ensuring that Certification and Validation Bodies worldwide operate to the same high standard.",
       color: "from-orange-500 to-red-500"
     },
     {
       icon: Building,
       title: "SME Empowerment Through Accreditation",
-      description: "Supporting the IAF's World Accreditation Day 2025 theme by helping SMEs achieve and maintain accreditation. Our cutting-edge training reduces costs, increases productivity, and opens new market opportunities.",
+      description: "Our cutting-edge training reduces costs, boosts productivity, and unlocks new market opportunities—supporting the IAF's World Accreditation Day 2025 theme of helping SMEs achieve and maintain accreditation, thereby empowering them to compete and thrive globally.",
       color: "from-green-500 to-emerald-500"
     },
     {
