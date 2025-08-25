@@ -17,7 +17,7 @@ const Navigation = () => {
   const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Learning Reinvented', href: '#learning-reinvented' },
-    { name: 'Our aa', href: '#services' },
+    { name: 'Our Approach', href: '#services' },
     { name: 'Our Clients', href: '#our-clients' },
     { name: 'Why Choose Us', href: '#why-choose-us' },
     { name: 'Contact', href: '#contact' },

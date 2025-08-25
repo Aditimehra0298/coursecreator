@@ -52,7 +52,7 @@ const About = () => {
                       Company Overview
                     </h3>
                     <p className="text-gray-700 leading-relaxed text-center">
-                      <strong>EVOKE.AI</strong> is an Artificial Intelligence division of <strong>DAMNART</strong>, a design and technology company, born in Dubai with presence in India, the UK, Canada and the US.
+                      <strong>EVOKE AI</strong> is an Artificial Intelligence division of <strong>DAMNART</strong>, a design and technology company, born in Dubai with presence in India, the UK, Canada and the US.
                     </p>
                   </div>
                 </div>

@@ -21,7 +21,7 @@ const LearningReinvented = () => {
                 </div>
                 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-800 mb-4">
-                  <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Learning Reinvented – Evoke AI</span>
+                  <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Evoke AI – Reinventing Learning for the Future</span>
                 </h2>
                 
 
