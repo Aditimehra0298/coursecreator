@@ -6,6 +6,15 @@
   Cache-Control: public, max-age=31536000
   Access-Control-Allow-Origin: *
 
+# Ultra-compatible basic web videos (maximum compatibility)
+*_basic_web.mp4
+  Content-Type: video/mp4
+  X-Content-Type-Options: nosniff
+  Accept-Ranges: bytes
+  Cache-Control: public, max-age=31536000
+  Access-Control-Allow-Origin: *
+  Content-Disposition: inline
+
 # Web-compatible videos (most browser compatible)
 *_web_compatible.mp4
   Content-Type: video/mp4

@@ -28,42 +28,42 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d_web_compatible.mp4', 
+      src: '/a8d_basic_web.mp4', 
       fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: '/a9d_web_compatible.mp4', 
+      src: '/a9d_basic_web.mp4', 
       fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
       key: 'french', 
       label: 'Français', 
-      src: '/a8d_web_compatible.mp4', 
+      src: '/a8d_basic_web.mp4', 
       fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' 
     },
     { 
       key: 'german', 
       label: 'Deutsch', 
-      src: '/a9d_web_compatible.mp4', 
+      src: '/a9d_basic_web.mp4', 
       fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' 
     },
     { 
       key: 'spanish', 
       label: 'Español', 
-      src: '/a8d_web_compatible.mp4', 
+      src: '/a8d_basic_web.mp4', 
       fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
     { 
       key: 'languages', 
       label: '+40 more languages', 
-      src: '/a9d_web_compatible.mp4', 
+      src: '/a9d_basic_web.mp4', 
       fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
