@@ -2,6 +2,25 @@
 *.mp4
   Content-Type: video/mp4
   X-Content-Type-Options: nosniff
+  Accept-Ranges: bytes
+  Cache-Control: public, max-age=31536000
+  Access-Control-Allow-Origin: *
+
+# Web-optimized videos
+*_web.mp4
+  Content-Type: video/mp4
+  X-Content-Type-Options: nosniff
+  Accept-Ranges: bytes
+  Cache-Control: public, max-age=31536000
+  Access-Control-Allow-Origin: *
+
+# Basic quality videos
+*_basic.mp4
+  Content-Type: video/mp4
+  X-Content-Type-Options: nosniff
+  Accept-Ranges: bytes
+  Cache-Control: public, max-age=31536000
+  Access-Control-Allow-Origin: *
 
 # Audio files
 *.aac

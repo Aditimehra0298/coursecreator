@@ -3,57 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Test - Basic Compatible Versions</title>
+    <title>Video Test - Evoke AI</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        .video-container { margin: 20px 0; }
-        video { max-width: 100%; border: 1px solid #ccc; }
-        .error { color: red; }
-        .success { color: green; }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .video-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .video-test {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        h1, h2 {
+            color: white;
+            text-align: center;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
     </style>
 </head>
 <body>
-    <h1>Testing Basic Compatible Videos</h1>
-    
+    <h1>🎥 Video Playback Test</h1>
+    <p style="text-align: center; color: white; margin-bottom: 30px;">Testing video files for Netlify compatibility</p>
+
     <div class="video-container">
-        <h3>Greek Video (a8d_basic.mp4)</h3>
-        <video 
-            src="/a8d_basic.mp4" 
-            controls 
-            preload="metadata"
-            width="320"
-            height="180"
-            onerror="this.nextElementSibling.textContent = 'Error: ' + (this.error ? this.error.message : 'Unknown error')"
-            onloadstart="this.nextElementSibling.textContent = 'Loading...'"
-            oncanplay="this.nextElementSibling.textContent = 'Success: Video can play!'"
-        ></video>
-        <div class="status"></div>
+        <h2>Test 1: Web-Optimized Video (a8d_web.mp4)</h2>
+        <video class="video-test" controls preload="metadata" poster="/l7.png">
+            <source src="/a8d_web.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="status info">Expected: Should load quickly and play smoothly</div>
     </div>
 
     <div class="video-container">
-        <h3>English Video (a9d_basic.mp4)</h3>
-        <video 
-            src="/a9d_basic.mp4" 
-            controls 
-            preload="metadata"
-            width="320"
-            height="180"
-            onerror="this.nextElementSibling.textContent = 'Error: ' + (this.error ? this.error.message : 'Unknown error')"
-            onloadstart="this.nextElementSibling.textContent = 'Loading...'"
-            oncanplay="this.nextElementSibling.textContent = 'Success: Video can play!'"
-        ></video>
-        <div class="status"></div>
+        <h2>Test 2: Basic Quality Video (a8d_basic.mp4)</h2>
+        <video class="video-test" controls preload="metadata" poster="/l7.png">
+            <source src="/a8d_basic.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="status info">Expected: Should load and play as fallback</div>
     </div>
 
     <div class="video-container">
-        <h3>File Sizes & Specifications</h3>
-        <ul>
-            <li>a8d_basic.mp4: 6.4MB (320x180, H.264 baseline level 1.3)</li>
-            <li>a9d_basic.mp4: 6.0MB (320x180, H.264 baseline level 1.3)</li>
-            <li>Audio: 32k AAC, 22.05kHz</li>
-            <li>Video: H.264 baseline profile, level 1.3</li>
-            <li>Resolution: 320x180 (very conservative)</li>
-        </ul>
+        <h2>Test 3: Original Video (a8d.mp4)</h2>
+        <video class="video-test" controls preload="metadata" poster="/l7.png">
+            <source src="/a8d.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="status info">Expected: May be slower due to larger file size</div>
     </div>
+
+    <div class="video-container">
+        <h2>Test 4: English Video (a9d_web.mp4)</h2>
+        <video class="video-test" controls preload="metadata" poster="/l7.png">
+            <source src="/a9d_web.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="status info">Expected: Should load quickly and play smoothly</div>
+    </div>
+
+    <script>
+        // Add event listeners to monitor video performance
+        document.querySelectorAll('video').forEach((video, index) => {
+            const statusDiv = video.parentElement.querySelector('.status');
+            
+            video.addEventListener('loadstart', () => {
+                statusDiv.textContent = `Loading started...`;
+                statusDiv.className = 'status info';
+            });
+            
+            video.addEventListener('canplay', () => {
+                statusDiv.textContent = `✅ Video ready to play`;
+                statusDiv.className = 'status success';
+            });
+            
+            video.addEventListener('error', (e) => {
+                statusDiv.textContent = `❌ Error loading video`;
+                statusDiv.className = 'status error';
+                console.error(`Video ${index + 1} error:`, e);
+            });
+            
+            video.addEventListener('loadeddata', () => {
+                statusDiv.textContent = `✅ Video data loaded successfully`;
+                statusDiv.className = 'status success';
+            });
+        });
+    </script>
 </body>
 </html>

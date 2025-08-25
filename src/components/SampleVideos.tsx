@@ -28,45 +28,50 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d.mp4', 
-      fallbackSrc: '/a8d.mp4',
+      src: '/a8d_web.mp4', 
+      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: '/a9d.mp4', 
-      fallbackSrc: '/a9d.mp4',
+      src: '/a9d_web.mp4', 
+      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
       key: 'french', 
       label: 'Français', 
-      src: '/a8d.mp4', 
+      src: '/a8d_web.mp4', 
+      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' 
     },
     { 
       key: 'german', 
       label: 'Deutsch', 
-      src: '/a9d.mp4', 
+      src: '/a9d_web.mp4', 
+      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' 
     },
     { 
       key: 'spanish', 
       label: 'Español', 
-      src: '/a8d.mp4', 
+      src: '/a8d_web.mp4', 
+      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
     { 
       key: 'languages', 
       label: '+40 more languages', 
-      src: '/a9d.mp4', 
+      src: '/a9d_web.mp4', 
+      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
   ];
 
   const [active, setActive] = useState<PlayableKey>('greek');
   const [videoError, setVideoError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     console.log('SampleVideos mounted, checking video sources:');
@@ -149,6 +154,7 @@ const SampleVideos = () => {
                         <button 
                           onClick={() => {
                             setVideoError(null);
+                            setIsLoading(true);
                             const video = refs.current[lang.key];
                             if (video) {
                               video.load();
@@ -158,6 +164,14 @@ const SampleVideos = () => {
                         >
                           Retry
                         </button>
+                      </div>
+                    </div>
+                  ) : isLoading ? (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">
+                      <div className="text-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                        <p className="text-lg font-semibold">Loading Video...</p>
+                        <p className="text-sm text-gray-300">Please wait while we prepare your content</p>
                       </div>
                     </div>
                   ) : (
@@ -172,6 +186,20 @@ const SampleVideos = () => {
                       muted
                       loop
                       playsInline
+                      preload="metadata"
+                      poster="/l7.png"
+                      onLoadStart={() => {
+                        console.log(`Video loading started for ${lang.key}`);
+                        setIsLoading(true);
+                      }}
+                      onCanPlay={() => {
+                        console.log(`Video can play for ${lang.key}`);
+                        setVideoError(null);
+                        setIsLoading(false);
+                      }}
+                      onLoadedData={() => {
+                        setIsLoading(false);
+                      }}
                       onError={(e) => {
                         const target = e.target as HTMLVideoElement;
                         const error = target.error;
@@ -182,6 +210,8 @@ const SampleVideos = () => {
                           readyState: target.readyState,
                           src: target.src
                         });
+                        
+                        setIsLoading(false);
                         
                         // Try fallback if available
                         if (lang.fallbackSrc && target.src !== lang.fallbackSrc) {
