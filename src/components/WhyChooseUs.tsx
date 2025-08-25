@@ -224,10 +224,10 @@ const WhyChooseUs = () => {
           <div className="text-center">
             <div className="bg-gradient-to-r from-teal-500/20 to-blue-500/20 backdrop-blur-sm rounded-3xl p-12 border border-teal-500/30">
               <h3 className="text-3xl font-bold text-black mb-4">
-                Ready to transform your business with AI-powered Training Courses?
+              Ready to transform your conformity assessment and compliance training with AI-powered Training design technology?
               </h3>
               <p className="text-lg text-black-300 mb-8">
-                Partner with Evoke AI, DAMNART to unlock your course training potential.
+              Partner with Evoke AI, DAMNART to unlock your course training design potential.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

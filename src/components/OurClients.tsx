@@ -54,7 +54,7 @@ const OurClients = () => {
                 Join Our Growing Network of Clients
               </h3>
               <p className="text-gray-700 text-sm mb-4">
-                Experience the transformative power of AI-driven learning Training Courses
+              Experience the transformative power of AI in designing Training Courses
               </p>
               <button 
                 onClick={() => setShowForm(true)}
