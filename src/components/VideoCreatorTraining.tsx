@@ -14,7 +14,7 @@ const VideoCreatorTraining = () => {
             Research. Strategies. Create – Video Based AI Training Course Creator
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto">
-            Explore our platform today and discover the future of interactive learning.
+          Explore our platform today and discover the future of self-paced learning.
           </p>
         </div>
 
