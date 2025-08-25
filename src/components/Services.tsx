@@ -36,10 +36,10 @@ const Services = () => {
     {
       icon: Shield,
       title: "Single Worldwide Program",
-      description: "The global conformity assessment system's primary function is to 'develop a single worldwide program of conformity assessment'.For a program to be truly worldwide, accessibility is key. Offering AI-designed training in multiple languages directly supports the dissemination of consistent knowledge and best practices across diverse linguistic regions, thereby contributing to the harmonization of standards and practices globally.",
+      description: "The global conformity assessment system's primary function is to 'develop a single worldwide program of conformity assessment. For a program to be truly worldwide, accessibility is key.' Offering AI-designed training in multiple languages directly supports the dissemination of consistent knowledge and best practices across diverse linguistic regions, thereby contributing to the harmonization of standards and practices globally.",
       color: "from-blue-500 to-cyan-500"
     },
-  
+    {
       icon: Users,
       title: "Global Collaboration & Technical Exchange",
       description: "Facilitating the IAF-ILAC Joint Annual Meetings' strategic priorities through AI-designed training methodologies. Enabling worldwide program development and harmonized standards across diverse linguistic regions.",
