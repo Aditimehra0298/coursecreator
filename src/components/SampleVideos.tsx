@@ -111,7 +111,7 @@ const SampleVideos = () => {
                 <div className="w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black" style={{ aspectRatio: '16 / 9' }}>
                   {/* Vimeo Video Embed */}
                   <iframe
-                    src="https://player.vimeo.com/video/1112787730?h=1234567890abcdef&autoplay=0&loop=1&title=0&byline=0&portrait=0"
+                    src="https://player.vimeo.com/video/1112787730?autoplay=0&loop=1&title=0&byline=0&portrait=0"
                     className="w-full h-full"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
