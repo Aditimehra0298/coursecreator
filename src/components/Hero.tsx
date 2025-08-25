@@ -36,7 +36,7 @@ const Hero = () => {
       </div>
       
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-          Empowering the AI Era of Assurance: Cutting-Edge Conformity Assessment Training Design
+        Building Global Trust in Conformity Assessment Training with AI-Driven Excellence
         </h1>
         
         <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto mb-8 leading-relaxed">
