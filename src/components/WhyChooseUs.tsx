@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
 
   const stats = [
     { number: "1,500+", label: "Expert Employees", icon: Users },
-    { number: "4o+", label: "Global Presence", icon: Globe },
+    { number: "40+", label: "Global Presence", icon: Globe },
     { number: "80%", label: "Cloud Infrastructure", icon: TrendingUp },
     { number: "12+", label: "Years Experience", icon: Award }
   ];
