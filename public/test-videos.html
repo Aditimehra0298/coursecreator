@@ -47,21 +47,29 @@
     <p style="text-align: center; color: white; margin-bottom: 30px;">Testing video files for Netlify compatibility</p>
 
     <div class="video-container">
-        <h2>Test 1: Ultra-Compatible Video (a8d_basic_web.mp4)</h2>
-        <video class="video-test" controls preload="metadata" poster="/l7.png">
-            <source src="/a8d_basic_web.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="status info">Expected: Should work in ALL browsers and devices (320x180, Level 1.3)</div>
+        <h2>Test 1: Vimeo Video (https://vimeo.com/1112787730)</h2>
+        <iframe 
+            src="https://player.vimeo.com/video/1112787730?h=1234567890abcdef&autoplay=0&loop=1&title=0&byline=0&portrait=0"
+            class="video-test"
+            frameborder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen
+            title="Evoke AI Training Video">
+        </iframe>
+        <div class="status info">Expected: Should load and play smoothly from Vimeo's CDN</div>
     </div>
 
     <div class="video-container">
-        <h2>Test 2: Ultra-Compatible Video (a9d_basic_web.mp4)</h2>
-        <video class="video-test" controls preload="metadata" poster="/l7.png">
-            <source src="/a9d_basic_web.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="status info">Expected: Should work in ALL browsers and devices (320x180, Level 1.3)</div>
+        <h2>Test 2: Vimeo Video with Controls</h2>
+        <iframe 
+            src="https://player.vimeo.com/video/1112787730?h=1234567890abcdef&autoplay=0&loop=1&title=1&byline=1&portrait=1"
+            class="video-test"
+            frameborder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen
+            title="Evoke AI Training Video with Controls">
+        </iframe>
+        <div class="status info">Expected: Should show Vimeo player with full controls</div>
     </div>
 
     <div class="video-container">

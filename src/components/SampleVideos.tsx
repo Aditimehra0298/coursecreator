@@ -15,101 +15,47 @@ type PlayableKey = 'greek' | 'english';
 type LanguageKey = PlayableKey | 'french' | 'german' | 'spanish' | 'languages';
 
 const SampleVideos = () => {
-  const refs = useRef<Record<LanguageKey, HTMLVideoElement | null>>({
-    greek: null,
-    english: null,
-    french: null,
-    german: null,
-    spanish: null,
-    languages: null,
-  });
+  const [active, setActive] = useState<PlayableKey>('greek');
 
-  const languages: Array<{ key: LanguageKey; label: string; src: string; capsuleClass?: string; fallbackSrc?: string }> = [
+  const languages: Array<{ key: LanguageKey; label: string; capsuleClass?: string }> = [
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d_basic_web.mp4', 
-      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: '/a9d_basic_web.mp4', 
-      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
       key: 'french', 
       label: 'Français', 
-      src: '/a8d_basic_web.mp4', 
-      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' 
     },
     { 
       key: 'german', 
       label: 'Deutsch', 
-      src: '/a9d_basic_web.mp4', 
-      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' 
     },
     { 
       key: 'spanish', 
       label: 'Español', 
-      src: '/a8d_basic_web.mp4', 
-      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
     { 
       key: 'languages', 
       label: '+40 more languages', 
-      src: '/a9d_basic_web.mp4', 
-      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
   ];
 
-  const [active, setActive] = useState<PlayableKey>('greek');
-  const [videoError, setVideoError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   useEffect(() => {
-    console.log('SampleVideos mounted, checking video sources:');
-    languages.forEach(lang => {
-      console.log(`${lang.key}: ${lang.src}`);
-    });
-    
-    // Test if netlify videos are accessible
-    const testVideo = document.createElement('video');
-    testVideo.src = '/a8d_netlify.mp4';
-    testVideo.addEventListener('canplaythrough', () => {
-      console.log('✅ Netlify video file is accessible and can play');
-    });
-    testVideo.addEventListener('error', (e) => {
-      console.log('❌ Netlify video file error:', e);
-    });
-    testVideo.load();
-    
-    // Set initial loading state to false after a short delay to allow video to load
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 100);
-    
-    return () => clearTimeout(timer);
+    console.log('SampleVideos mounted, using Vimeo video: https://vimeo.com/1112787730');
   }, []);
 
   const switchTo = (lang: PlayableKey) => {
-    // Pause all videos and switch view
-    (Object.keys(refs.current) as LanguageKey[]).forEach(k => {
-      const vid = refs.current[k];
-      if (vid) vid.pause();
-    });
     setActive(lang);
-  };
-
-  const handleVideoError = (lang: LanguageKey, error: string) => {
-    console.log(`Video error for ${lang}:`, error);
-    setVideoError(`${lang} - ${error}`);
   };
 
   // Removed 'All' capsule
@@ -163,83 +109,15 @@ const SampleVideos = () => {
             {languages.filter(l => l.key === active).map(lang => (
               <div key={lang.key} className="block">
                 <div className="w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black" style={{ aspectRatio: '16 / 9' }}>
-                  {/* Always show video element for now to debug */}
-                  <video
-                    ref={(el) => {
-                      refs.current[lang.key] = el;
-                    }}
-                    src={lang.src}
-                    className="w-full h-full object-cover"
-                    controls
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    poster="/l7.png"
-                    onLoadStart={() => {
-                      console.log(`🎬 Video loading started for ${lang.key} with src: ${lang.src}`);
-                      setIsLoading(true);
-                    }}
-                    onCanPlay={() => {
-                      console.log(`✅ Video can play for ${lang.key} with src: ${lang.src}`);
-                      setVideoError(null);
-                      setIsLoading(false);
-                    }}
-                    onLoadedData={() => {
-                      console.log(`📊 Video data loaded for ${lang.key} with src: ${lang.src}`);
-                      setIsLoading(false);
-                    }}
-                    onLoadedMetadata={() => {
-                      console.log(`📋 Video metadata loaded for ${lang.key} with src: ${lang.src}`);
-                    }}
-                    onProgress={() => {
-                      console.log(`📈 Video progress for ${lang.key} with src: ${lang.src}`);
-                    }}
-                    onError={(e) => {
-                      const target = e.target as HTMLVideoElement;
-                      const error = target.error;
-                      console.log(`❌ Video error details for ${lang.key}:`, {
-                        currentSrc: target.currentSrc,
-                        error: error,
-                        networkState: target.networkState,
-                        readyState: target.readyState,
-                        src: target.src,
-                        intendedSrc: lang.src
-                      });
-                      
-                      setIsLoading(false);
-                      
-                      // Try fallback if available
-                      if (lang.fallbackSrc && target.src !== lang.fallbackSrc && target.src === lang.src) {
-                        console.log(`🔄 Trying fallback: ${lang.fallbackSrc} for ${lang.key}`);
-                        target.src = lang.fallbackSrc;
-                        target.load();
-                      } else {
-                        console.log(`🚫 No fallback available or already tried fallback for ${lang.key}`);
-                        handleVideoError(lang.key, error ? error.message : 'Unknown error');
-                      }
-                    }}
+                  {/* Vimeo Video Embed */}
+                  <iframe
+                    src="https://player.vimeo.com/video/1112787730?h=1234567890abcdef&autoplay=0&loop=1&title=0&byline=0&portrait=0"
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    title="Evoke AI Training Video"
                   />
-                  
-                  {/* Show error message below video if needed */}
-                  {videoError && videoError.includes(lang.label) && (
-                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-2">
-                      <strong>Video Error:</strong> {videoError}
-                      <button 
-                        onClick={() => {
-                          setVideoError(null);
-                          const video = refs.current[lang.key];
-                          if (video) {
-                            video.load();
-                          }
-                        }}
-                        className="ml-2 px-2 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700"
-                      >
-                        Retry
-                      </button>
-                    </div>
-                  )}
                 </div>
               </div>
             ))}
