@@ -79,6 +79,17 @@ const SampleVideos = () => {
       console.log(`${lang.key}: ${lang.src}`);
     });
     
+    // Test if netlify videos are accessible
+    const testVideo = document.createElement('video');
+    testVideo.src = '/a8d_netlify.mp4';
+    testVideo.addEventListener('canplaythrough', () => {
+      console.log('✅ Netlify video file is accessible and can play');
+    });
+    testVideo.addEventListener('error', (e) => {
+      console.log('❌ Netlify video file error:', e);
+    });
+    testVideo.load();
+    
     // Set initial loading state to false after a short delay to allow video to load
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -167,41 +178,60 @@ const SampleVideos = () => {
                     preload="metadata"
                     poster="/l7.png"
                     onLoadStart={() => {
-                      console.log(`Video loading started for ${lang.key}`);
+                      console.log(`🎬 Video loading started for ${lang.key} with src: ${lang.src}`);
                       setIsLoading(true);
                     }}
                     onCanPlay={() => {
-                      console.log(`Video can play for ${lang.key}`);
+                      console.log(`✅ Video can play for ${lang.key} with src: ${lang.src}`);
                       setVideoError(null);
                       setIsLoading(false);
                     }}
                     onLoadedData={() => {
-                      console.log(`Video data loaded for ${lang.key}`);
+                      console.log(`📊 Video data loaded for ${lang.key} with src: ${lang.src}`);
                       setIsLoading(false);
+                    }}
+                    onLoadedMetadata={() => {
+                      console.log(`📋 Video metadata loaded for ${lang.key} with src: ${lang.src}`);
+                    }}
+                    onProgress={() => {
+                      console.log(`📈 Video progress for ${lang.key} with src: ${lang.src}`);
                     }}
                     onError={(e) => {
                       const target = e.target as HTMLVideoElement;
                       const error = target.error;
-                      console.log(`Video error details for ${lang.key}:`, {
+                      console.log(`❌ Video error details for ${lang.key}:`, {
                         currentSrc: target.currentSrc,
                         error: error,
                         networkState: target.networkState,
                         readyState: target.readyState,
-                        src: target.src
+                        src: target.src,
+                        intendedSrc: lang.src
                       });
                       
                       setIsLoading(false);
                       
-                      // Try fallback if available
-                      if (lang.fallbackSrc && target.src !== lang.fallbackSrc) {
-                        console.log(`Trying fallback: ${lang.fallbackSrc}`);
+                      // Temporarily disable fallback to debug
+                      console.log(`🚫 Fallback disabled for debugging - showing error for ${lang.key}`);
+                      handleVideoError(lang.key, error ? error.message : 'Unknown error');
+                      
+                      // Original fallback logic (commented out for debugging)
+                      /*
+                      if (lang.fallbackSrc && target.src !== lang.fallbackSrc && target.src === lang.src) {
+                        console.log(`🔄 Trying fallback: ${lang.fallbackSrc} for ${lang.key}`);
                         target.src = lang.fallbackSrc;
                         target.load();
                       } else {
+                        console.log(`🚫 No fallback available or already tried fallback for ${lang.key}`);
                         handleVideoError(lang.key, error ? error.message : 'Unknown error');
                       }
+                      */
                     }}
                   />
+                  
+                  {/* Debug status */}
+                  <div className="text-white text-center py-2 bg-blue-600 text-sm">
+                    Current Source: {lang.src} | Loading: {isLoading ? 'Yes' : 'No'} | Error: {videoError ? 'Yes' : 'No'}
+                  </div>
                   
                   {/* Show error message below video if needed */}
                   {videoError && videoError.includes(lang.label) && (
