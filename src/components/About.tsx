@@ -44,9 +44,17 @@ const About = () => {
                 
                 {/* EVOKE.AI Description */}
                 <div className="max-w-4xl mx-auto mb-8">
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    <strong>EVOKE.AI</strong> is an Artificial Intelligence division of <strong>DAMNART</strong>, a design and technology company, born in Dubai with presence in India, the UK, Canada and the US.
-                  </p>
+                  <div className="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-2xl border border-blue-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center justify-center">
+                      <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      Company Overview
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed text-center">
+                      <strong>EVOKE.AI</strong> is an Artificial Intelligence division of <strong>DAMNART</strong>, a design and technology company, born in Dubai with presence in India, the UK, Canada and the US.
+                    </p>
+                  </div>
                 </div>
               </div>
 
