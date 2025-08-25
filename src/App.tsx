@@ -61,6 +61,24 @@ function App() {
         </div>
       </a>
 
+      {/* Floating Email Button */}
+      <a
+        href="mailto:info@www.damnart.com"
+        className="fixed bottom-36 right-4 sm:bottom-40 sm:right-6 z-50 group"
+        aria-label="Email us"
+      >
+        <div className="bg-blue-500 hover:bg-blue-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[56px] min-h-[56px] flex items-center justify-center">
+          <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        {/* Tooltip - Hidden on mobile */}
+        <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap hidden sm:block">
+          Email Us
+          <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+        </div>
+      </a>
+
       {/* Floating Phone Button */}
       <a
         href="tel:+919262740889"
