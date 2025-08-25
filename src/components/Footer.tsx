@@ -135,7 +135,7 @@ const Footer = () => {
             <div className="border-t border-blue-300 pt-8">
               <div className="flex flex-col lg:flex-row justify-between items-center">
                 <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-black text-sm mb-4 lg:mb-0">
-                  <p>&copy; Damnart 2024, All Rights Reserved</p>
+                  <p>&copy; Damnart 2021-2025, All Rights Reserved</p>
                 </div>
               </div>
             </div>
