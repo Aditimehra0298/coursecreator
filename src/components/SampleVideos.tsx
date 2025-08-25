@@ -109,14 +109,17 @@ const SampleVideos = () => {
             {languages.filter(l => l.key === active).map(lang => (
               <div key={lang.key} className="block">
                 <div className="w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black" style={{ aspectRatio: '16 / 9' }}>
-                  {/* Vimeo Video Embed */}
+                  {/* Vimeo Video Embed - Different videos for different languages */}
                   <iframe
-                    src="https://player.vimeo.com/video/1112787730?autoplay=0&loop=1&title=0&byline=0&portrait=0"
+                    src={active === 'greek' 
+                      ? "https://player.vimeo.com/video/1112787768?autoplay=0&loop=1&title=0&byline=0&portrait=0"
+                      : "https://player.vimeo.com/video/1112787730?autoplay=0&loop=1&title=0&byline=0&portrait=0"
+                    }
                     className="w-full h-full"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
-                    title="Evoke AI Training Video"
+                    title={active === 'greek' ? "Evoke AI Training Video - Greek" : "Evoke AI Training Video"}
                   />
                 </div>
               </div>
