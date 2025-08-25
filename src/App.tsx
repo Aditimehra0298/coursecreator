@@ -64,7 +64,7 @@ function App() {
       {/* Floating Email Button */}
       <a
         href="mailto:info@www.damnart.com"
-        className="fixed bottom-36 right-4 sm:bottom-40 sm:right-6 z-50 group"
+        className="fixed bottom-28 right-4 sm:bottom-32 sm:right-6 z-50 group"
         aria-label="Email us"
       >
         <div className="bg-blue-500 hover:bg-blue-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[56px] min-h-[56px] flex items-center justify-center">
@@ -82,7 +82,7 @@ function App() {
       {/* Floating Phone Button */}
       <a
         href="tel:+919262740889"
-        className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-50 group"
+        className="fixed bottom-16 right-4 sm:bottom-20 sm:right-6 z-50 group"
         aria-label="Call us"
       >
         <div className="bg-red-500 hover:bg-red-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[56px] min-h-[56px] flex items-center justify-center">
