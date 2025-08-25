@@ -47,16 +47,25 @@
     <p style="text-align: center; color: white; margin-bottom: 30px;">Testing video files for Netlify compatibility</p>
 
     <div class="video-container">
-        <h2>Test 1: Web-Optimized Video (a8d_web.mp4)</h2>
+        <h2>Test 1: Netlify-Optimized Video (a8d_netlify.mp4)</h2>
         <video class="video-test" controls preload="metadata" poster="/l7.png">
-            <source src="/a8d_web.mp4" type="video/mp4">
+            <source src="/a8d_netlify.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="status info">Expected: Should load quickly and play smoothly</div>
+        <div class="status info">Expected: Should load quickly and play smoothly on Netlify</div>
     </div>
 
     <div class="video-container">
-        <h2>Test 2: Basic Quality Video (a8d_basic.mp4)</h2>
+        <h2>Test 2: Netlify-Optimized Video (a9d_netlify.mp4)</h2>
+        <video class="video-test" controls preload="metadata" poster="/l7.png">
+            <source src="/a9d_netlify.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="status info">Expected: Should load quickly and play smoothly on Netlify</div>
+    </div>
+
+    <div class="video-container">
+        <h2>Test 3: Basic Quality Video (a8d_basic.mp4)</h2>
         <video class="video-test" controls preload="metadata" poster="/l7.png">
             <source src="/a8d_basic.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -65,21 +74,12 @@
     </div>
 
     <div class="video-container">
-        <h2>Test 3: Original Video (a8d.mp4)</h2>
+        <h2>Test 4: Original Video (a8d.mp4)</h2>
         <video class="video-test" controls preload="metadata" poster="/l7.png">
             <source src="/a8d.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="status info">Expected: May be slower due to larger file size</div>
-    </div>
-
-    <div class="video-container">
-        <h2>Test 4: English Video (a9d_web.mp4)</h2>
-        <video class="video-test" controls preload="metadata" poster="/l7.png">
-            <source src="/a9d_web.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="status info">Expected: Should load quickly and play smoothly</div>
     </div>
 
     <script>

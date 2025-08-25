@@ -28,43 +28,43 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d_basic.mp4', 
-      fallbackSrc: '/a8d.mp4',
+      src: '/a8d_netlify.mp4', 
+      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: '/a9d_basic.mp4', 
-      fallbackSrc: '/a9d.mp4',
+      src: '/a9d_netlify.mp4', 
+      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
       key: 'french', 
       label: 'Français', 
-      src: '/a8d_basic.mp4', 
-      fallbackSrc: '/a8d.mp4',
+      src: '/a8d_netlify.mp4', 
+      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' 
     },
     { 
       key: 'german', 
       label: 'Deutsch', 
-      src: '/a9d_basic.mp4', 
-      fallbackSrc: '/a9d.mp4',
+      src: '/a9d_netlify.mp4', 
+      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' 
     },
     { 
       key: 'spanish', 
       label: 'Español', 
-      src: '/a8d_basic.mp4', 
-      fallbackSrc: '/a8d.mp4',
+      src: '/a8d_netlify.mp4', 
+      fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
     { 
       key: 'languages', 
       label: '+40 more languages', 
-      src: '/a9d_basic.mp4', 
-      fallbackSrc: '/a9d.mp4',
+      src: '/a9d_netlify.mp4', 
+      fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
   ];
@@ -77,16 +77,6 @@ const SampleVideos = () => {
     console.log('SampleVideos mounted, checking video sources:');
     languages.forEach(lang => {
       console.log(`${lang.key}: ${lang.src}`);
-    });
-    
-    // Test if video files are accessible
-    const testVideo = new Audio();
-    testVideo.src = '/a8d_basic.mp4';
-    testVideo.addEventListener('canplaythrough', () => {
-      console.log('✅ Video file is accessible and can play');
-    });
-    testVideo.addEventListener('error', (e) => {
-      console.log('❌ Video file error:', e);
     });
     
     // Set initial loading state to false after a short delay to allow video to load
@@ -162,20 +152,9 @@ const SampleVideos = () => {
             {languages.filter(l => l.key === active).map(lang => (
               <div key={lang.key} className="block">
                 <div className="w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black" style={{ aspectRatio: '16 / 9' }}>
-                  {/* Debug info */}
-                  <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded z-50">
-                    Debug: {lang.key} - {isLoading ? 'Loading' : 'Ready'} - {videoError ? 'Error' : 'OK'}
-                  </div>
-                  
-                  {/* Status text */}
-                  <div className="text-white text-center py-2 bg-blue-600">
-                    Video Source: {lang.src} | Status: {isLoading ? 'Loading...' : 'Ready'} | Error: {videoError ? 'Yes' : 'No'}
-                  </div>
-                  
                   {/* Always show video element for now to debug */}
                   <video
                     ref={(el) => {
-                      console.log(`Setting ref for ${lang.key}:`, el);
                       refs.current[lang.key] = el;
                     }}
                     src={lang.src}
@@ -187,7 +166,6 @@ const SampleVideos = () => {
                     playsInline
                     preload="metadata"
                     poster="/l7.png"
-                    style={{ minHeight: '300px', border: '2px solid red' }}
                     onLoadStart={() => {
                       console.log(`Video loading started for ${lang.key}`);
                       setIsLoading(true);
