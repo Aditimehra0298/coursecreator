@@ -52,7 +52,7 @@ const About = () => {
                       Company Overview
                     </h3>
                     <p className="text-gray-700 leading-relaxed text-center">
-                      <strong>EVOKE AI</strong> is an Artificial Intelligence division of <strong>DAMNART</strong>, a design and technology company, born in Dubai with presence in India, the UK, Canada and the US.
+                      <strong>EVOKE AI</strong>, the Artificial Intelligence division of <strong>DAMNART</strong>—a design and technology company founded in Dubai with a presence in India, the UK, Canada, and the US—specializes in AI-driven conformity assessment training. Our expertise aligns seamlessly with the global conformity assessment system's objectives, strategic initiatives, and its mission to foster competence and trust worldwide.
                     </p>
                   </div>
                 </div>
