@@ -28,42 +28,42 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d_netlify.mp4', 
+      src: '/a8d_web_compatible.mp4', 
       fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: '/a9d_netlify.mp4', 
+      src: '/a9d_web_compatible.mp4', 
       fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
       key: 'french', 
       label: 'Français', 
-      src: '/a8d_netlify.mp4', 
+      src: '/a8d_web_compatible.mp4', 
       fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' 
     },
     { 
       key: 'german', 
       label: 'Deutsch', 
-      src: '/a9d_netlify.mp4', 
+      src: '/a9d_web_compatible.mp4', 
       fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' 
     },
     { 
       key: 'spanish', 
       label: 'Español', 
-      src: '/a8d_netlify.mp4', 
+      src: '/a8d_web_compatible.mp4', 
       fallbackSrc: '/a8d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
     { 
       key: 'languages', 
       label: '+40 more languages', 
-      src: '/a9d_netlify.mp4', 
+      src: '/a9d_web_compatible.mp4', 
       fallbackSrc: '/a9d_basic.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
@@ -210,12 +210,7 @@ const SampleVideos = () => {
                       
                       setIsLoading(false);
                       
-                      // Temporarily disable fallback to debug
-                      console.log(`🚫 Fallback disabled for debugging - showing error for ${lang.key}`);
-                      handleVideoError(lang.key, error ? error.message : 'Unknown error');
-                      
-                      // Original fallback logic (commented out for debugging)
-                      /*
+                      // Try fallback if available
                       if (lang.fallbackSrc && target.src !== lang.fallbackSrc && target.src === lang.src) {
                         console.log(`🔄 Trying fallback: ${lang.fallbackSrc} for ${lang.key}`);
                         target.src = lang.fallbackSrc;
@@ -224,14 +219,8 @@ const SampleVideos = () => {
                         console.log(`🚫 No fallback available or already tried fallback for ${lang.key}`);
                         handleVideoError(lang.key, error ? error.message : 'Unknown error');
                       }
-                      */
                     }}
                   />
-                  
-                  {/* Debug status */}
-                  <div className="text-white text-center py-2 bg-blue-600 text-sm">
-                    Current Source: {lang.src} | Loading: {isLoading ? 'Yes' : 'No'} | Error: {videoError ? 'Yes' : 'No'}
-                  </div>
                   
                   {/* Show error message below video if needed */}
                   {videoError && videoError.includes(lang.label) && (
