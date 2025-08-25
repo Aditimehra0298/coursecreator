@@ -42,6 +42,12 @@ const About = () => {
                   About <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent"> Evoke AI , DamnArt</span>
                 </h2>
                 
+                {/* EVOKE.AI Description */}
+                <div className="max-w-4xl mx-auto mb-8">
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    <strong>EVOKE.AI</strong> is an Artificial Intelligence division of <strong>DAMNART</strong>, a design and technology company, born in Dubai with presence in India, the UK, Canada and the US.
+                  </p>
+                </div>
               </div>
 
               {/* Grid Layout for Content */}
