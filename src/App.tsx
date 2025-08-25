@@ -63,7 +63,7 @@ function App() {
 
       {/* Floating Email Button */}
       <a
-        href="mailto:damnart.ai.guladab@gmail.com"
+        href="mailto:damnart.ai.guladab@gmail.com?cc=eurocert.mv@gmail.com,hip.spskpal@gmail.com"
         className="fixed bottom-52 right-4 sm:bottom-56 sm:right-6 z-50 group"
         aria-label="Email us"
       >
