@@ -28,56 +28,73 @@ const SampleVideos = () => {
     { 
       key: 'greek', 
       label: 'Greek (Ελληνικά)', 
-      src: '/a8d_web.mp4', 
-      fallbackSrc: '/a8d_basic.mp4',
+      src: '/a8d_basic.mp4', 
+      fallbackSrc: '/a8d.mp4',
       capsuleClass: 'bg-teal-100 text-teal-800 hover:bg-teal-200' 
     },
     { 
       key: 'english', 
       label: 'English', 
-      src: '/a9d_web.mp4', 
-      fallbackSrc: '/a9d_basic.mp4',
+      src: '/a9d_basic.mp4', 
+      fallbackSrc: '/a9d.mp4',
       capsuleClass: 'bg-blue-100 text-blue-800 hover:bg-blue-200' 
     },
     { 
       key: 'french', 
       label: 'Français', 
-      src: '/a8d_web.mp4', 
-      fallbackSrc: '/a8d_basic.mp4',
+      src: '/a8d_basic.mp4', 
+      fallbackSrc: '/a8d.mp4',
       capsuleClass: 'bg-purple-100 text-purple-800 hover:bg-purple-200' 
     },
     { 
       key: 'german', 
       label: 'Deutsch', 
-      src: '/a9d_web.mp4', 
-      fallbackSrc: '/a9d_basic.mp4',
+      src: '/a9d_basic.mp4', 
+      fallbackSrc: '/a9d.mp4',
       capsuleClass: 'bg-amber-100 text-amber-800 hover:bg-amber-200' 
     },
     { 
       key: 'spanish', 
       label: 'Español', 
-      src: '/a8d_web.mp4', 
-      fallbackSrc: '/a8d_basic.mp4',
+      src: '/a8d_basic.mp4', 
+      fallbackSrc: '/a8d.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
     { 
       key: 'languages', 
       label: '+40 more languages', 
-      src: '/a9d_web.mp4', 
-      fallbackSrc: '/a9d_basic.mp4',
+      src: '/a9d_basic.mp4', 
+      fallbackSrc: '/a9d.mp4',
       capsuleClass: 'bg-rose-100 text-rose-800 hover:bg-rose-200' 
     },
   ];
 
   const [active, setActive] = useState<PlayableKey>('greek');
   const [videoError, setVideoError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     console.log('SampleVideos mounted, checking video sources:');
     languages.forEach(lang => {
       console.log(`${lang.key}: ${lang.src}`);
     });
+    
+    // Test if video files are accessible
+    const testVideo = new Audio();
+    testVideo.src = '/a8d_basic.mp4';
+    testVideo.addEventListener('canplaythrough', () => {
+      console.log('✅ Video file is accessible and can play');
+    });
+    testVideo.addEventListener('error', (e) => {
+      console.log('❌ Video file error:', e);
+    });
+    
+    // Set initial loading state to false after a short delay to allow video to load
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   const switchTo = (lang: PlayableKey) => {
@@ -145,84 +162,86 @@ const SampleVideos = () => {
             {languages.filter(l => l.key === active).map(lang => (
               <div key={lang.key} className="block">
                 <div className="w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black" style={{ aspectRatio: '16 / 9' }}>
-                  {videoError && videoError.includes(lang.label) ? (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">
-                      <div className="text-center">
-                        <div className="text-4xl mb-4">⚠️</div>
-                        <p className="text-lg font-semibold mb-2">Video Loading Error</p>
-                        <p className="text-sm text-gray-300 mb-4">{videoError}</p>
-                        <button 
-                          onClick={() => {
-                            setVideoError(null);
-                            setIsLoading(true);
-                            const video = refs.current[lang.key];
-                            if (video) {
-                              video.load();
-                            }
-                          }}
-                          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-                        >
-                          Retry
-                        </button>
-                      </div>
+                  {/* Debug info */}
+                  <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded z-50">
+                    Debug: {lang.key} - {isLoading ? 'Loading' : 'Ready'} - {videoError ? 'Error' : 'OK'}
+                  </div>
+                  
+                  {/* Status text */}
+                  <div className="text-white text-center py-2 bg-blue-600">
+                    Video Source: {lang.src} | Status: {isLoading ? 'Loading...' : 'Ready'} | Error: {videoError ? 'Yes' : 'No'}
+                  </div>
+                  
+                  {/* Always show video element for now to debug */}
+                  <video
+                    ref={(el) => {
+                      console.log(`Setting ref for ${lang.key}:`, el);
+                      refs.current[lang.key] = el;
+                    }}
+                    src={lang.src}
+                    className="w-full h-full object-cover"
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster="/l7.png"
+                    style={{ minHeight: '300px', border: '2px solid red' }}
+                    onLoadStart={() => {
+                      console.log(`Video loading started for ${lang.key}`);
+                      setIsLoading(true);
+                    }}
+                    onCanPlay={() => {
+                      console.log(`Video can play for ${lang.key}`);
+                      setVideoError(null);
+                      setIsLoading(false);
+                    }}
+                    onLoadedData={() => {
+                      console.log(`Video data loaded for ${lang.key}`);
+                      setIsLoading(false);
+                    }}
+                    onError={(e) => {
+                      const target = e.target as HTMLVideoElement;
+                      const error = target.error;
+                      console.log(`Video error details for ${lang.key}:`, {
+                        currentSrc: target.currentSrc,
+                        error: error,
+                        networkState: target.networkState,
+                        readyState: target.readyState,
+                        src: target.src
+                      });
+                      
+                      setIsLoading(false);
+                      
+                      // Try fallback if available
+                      if (lang.fallbackSrc && target.src !== lang.fallbackSrc) {
+                        console.log(`Trying fallback: ${lang.fallbackSrc}`);
+                        target.src = lang.fallbackSrc;
+                        target.load();
+                      } else {
+                        handleVideoError(lang.key, error ? error.message : 'Unknown error');
+                      }
+                    }}
+                  />
+                  
+                  {/* Show error message below video if needed */}
+                  {videoError && videoError.includes(lang.label) && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-2">
+                      <strong>Video Error:</strong> {videoError}
+                      <button 
+                        onClick={() => {
+                          setVideoError(null);
+                          const video = refs.current[lang.key];
+                          if (video) {
+                            video.load();
+                          }
+                        }}
+                        className="ml-2 px-2 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700"
+                      >
+                        Retry
+                      </button>
                     </div>
-                  ) : isLoading ? (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">
-                      <div className="text-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                        <p className="text-lg font-semibold">Loading Video...</p>
-                        <p className="text-sm text-gray-300">Please wait while we prepare your content</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <video
-                      ref={(el) => {
-                        refs.current[lang.key] = el;
-                      }}
-                      src={lang.src}
-                      className="w-full h-full object-cover"
-                      controls
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      poster="/l7.png"
-                      onLoadStart={() => {
-                        console.log(`Video loading started for ${lang.key}`);
-                        setIsLoading(true);
-                      }}
-                      onCanPlay={() => {
-                        console.log(`Video can play for ${lang.key}`);
-                        setVideoError(null);
-                        setIsLoading(false);
-                      }}
-                      onLoadedData={() => {
-                        setIsLoading(false);
-                      }}
-                      onError={(e) => {
-                        const target = e.target as HTMLVideoElement;
-                        const error = target.error;
-                        console.log(`Video error details:`, {
-                          currentSrc: target.currentSrc,
-                          error: error,
-                          networkState: target.networkState,
-                          readyState: target.readyState,
-                          src: target.src
-                        });
-                        
-                        setIsLoading(false);
-                        
-                        // Try fallback if available
-                        if (lang.fallbackSrc && target.src !== lang.fallbackSrc) {
-                          console.log(`Trying fallback: ${lang.fallbackSrc}`);
-                          target.src = lang.fallbackSrc;
-                          target.load();
-                        } else {
-                          handleVideoError(lang.key, error ? error.message : 'Unknown error');
-                        }
-                      }}
-                    />
                   )}
                 </div>
               </div>
