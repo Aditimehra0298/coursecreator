@@ -32,7 +32,7 @@ const Footer = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" />
+        <source src="https://cdn.pixabay.com/video/2022/11/07/138082-768352300_large.mp4" type="video/mp4" />
       </video>
       
       {/* Overlay */}
