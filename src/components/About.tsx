@@ -43,8 +43,8 @@ const About = () => {
                 </h2>
                 
                 {/* EVOKE.AI Description */}
-                <div className="max-w-4xl mx-auto mb-8">
-                  <div className="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-2xl border border-blue-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mx-auto mb-8">
+                  <div className="md:col-span-2 bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-2xl border border-blue-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                     <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center justify-center">
                       <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 20 20">
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>

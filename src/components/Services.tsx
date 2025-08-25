@@ -36,8 +36,7 @@ const Services = () => {
     {
       icon: Shield,
       title: "Single Worldwide Program",
-      description: "The global conformity assessment system's primary function is to 'develop a single worldwide program of conformity assessment. For a program to be truly worldwide, accessibility is key.' Offering AI-designed training in multiple languages directly supports the dissemination of consistent knowledge and best practices across diverse linguistic regions, thereby contributing to the harmonization of standards and practices globally.",
-      color: "from-blue-500 to-cyan-500"
+      description: "The global conformity assessment system's primary function is to develop a single worldwide program of conformity assessment. We offer AI-designed training, directly supporting the dissemination of consistent knowledge across diverse linguistic regions, thereby contributing to the harmonization of standards and practices globally.",
     },
     {
       icon: Users,
