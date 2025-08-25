@@ -63,11 +63,20 @@ function App() {
 
       {/* Floating Email Button */}
       <a
-        href="mailto:damnart.ai.guladab@gmail.com?cc=eurocert.mv@gmail.com,hip.spskpal@gmail.com"
+        href="mailto:damnart.ai.guladab@gmail.com"
         className="fixed bottom-52 right-4 sm:bottom-56 sm:right-6 z-50 group"
         aria-label="Email us"
+        onClick={(e) => {
+          console.log('Email button clicked!');
+          // Fallback if mailto doesn't work
+          if (!navigator.userAgent.includes('mailto')) {
+            e.preventDefault();
+            window.open('https://mail.google.com/mail/?view=cm&fs=1&to=damnart.ai.guladab@gmail.com&cc=eurocert.mv@gmail.com,hip.spskpal@gmail.com', '_blank');
+          }
+        }}
+        style={{ zIndex: 9999 }}
       >
-        <div className="bg-blue-500 hover:bg-blue-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+        <div className="bg-blue-500 hover:bg-blue-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center border-2 border-white">
           <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
