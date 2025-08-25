@@ -6,7 +6,7 @@ const Hero = () => {
   const [showConsult, setShowConsult] = useState(false);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-28">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full">
               <video
@@ -26,7 +26,7 @@ const Hero = () => {
             
       {/* Content Overlay */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div className="mb-6">
+        <div className="mb-6 mt-4 sm:mt-6">
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white rounded-full shadow-lg mb-6 transform hover:scale-105 transition-transform duration-200">
             <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
